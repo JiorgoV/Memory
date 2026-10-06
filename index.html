@@ -1,13 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memory</title>
     <link rel="icon" href="/favicon.svg">
 </head>
+
 <body>
-    <main id="app"></main>
+    <main id="app">
+        <section class="home">
+            <div class="home__content">
+                <p class="home__subtitle">It's play time.</p>
+                <h1 class="home__title">Ready to play?</h1>
+                <button class="home__button" type="button">
+                    <img src="/icons/stadia-controller-dark.svg" alt="">
+                    <span class="home__button-text">Play</span>
+                    <img src="/icons/arrow.svg" alt="">
+                </button>
+            </div>
+
+            <img class="home__controller" src="/icons/stadia-controller.svg" alt="">
+        </section>
+    </main>
     <script type="module" src="/src/main.ts"></script>
 </body>
+
 </html>
