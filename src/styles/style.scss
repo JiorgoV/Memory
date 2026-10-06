@@ -57,6 +57,19 @@ body {
         color: $button-text;
         border: none;
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 24px;
+
+        &-icon {
+            width: 44px;
+            height: 32px;
+        }
+
+        &-arrow {
+            width: 33px;
+        }
     }
 
     &__button-text {
