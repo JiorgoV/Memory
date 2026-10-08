@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 @font-face {
     font-family: "Almarai";
     src: url("/fonts/almarai-regular.ttf") format("truetype");
@@ -16,14 +22,15 @@ $color-background: #303131;
 $color-text: #ffffff;
 $button-background: #f0ea6e;
 $button-text: #303131;
+$summary-background: #F6F6F6;
 
 body {
     margin: 0;
-    background: $color-background;
 }
 
 .home {
     min-height: 100vh;
+    background: $color-background;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -95,10 +102,112 @@ body {
         font-weight: 700;
     }
 
-        &__controller {
+    &__controller {
         position: absolute;
         left: -88px;
         bottom: 32px;
         width: 414px;
+    }
+}
+
+.settings {
+    min-height: 100vh;
+    padding: 45px;
+    background: #ffffff;
+
+    &__layout {
+        display: flex;
+        gap: 450px;
+    }
+
+    &__title {
+        position: relative;
+        width: fit-content;
+        margin: 0 0 40px;
+        font-family: "Red Rose", sans-serif;
+        font-size: 54px;
+        font-weight: 700;
+        font-style: bold;
+        line-height: 100%;
+        color: $button-text;
+
+        &::after {  // gelbe linie
+            content: "";
+            position: absolute;
+            left: -10px;
+            right: -10px;
+            bottom: -8px;
+            height: 3px;
+            background: $button-background;
+        }
+
+        &::before { // gelbe raute
+            content: "";
+            position: absolute;
+            right: -14px;
+            bottom: -11px;
+            width: 9px;
+            height: 9px;
+            background: $button-background;
+            transform: rotate(45deg);
+        }
+    }
+
+        &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    &__form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
+
+    &__form-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 12px;
+        padding: 0;
+        font-weight: 700;
+    }
+
+        &__option {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-left: 34px;
+        cursor: pointer;
+
+        input[type="radio"] {
+            appearance: none;
+            display: grid;
+            place-content: center;
+            width: 16px;
+            height: 16px;
+            margin: 0;
+            border: 2px solid $color-background;
+            border-radius: 50%;
+            cursor: pointer;
+
+            &::before {
+                content: "";
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: $color-background;
+                transform: scale(0);
+                transition: transform 0.15s ease;
+            }
+
+            &:checked::before {
+                transform: scale(1);
+            }
+        }
     }
 }
