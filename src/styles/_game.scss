@@ -1,1 +1,67 @@
 @use "variables" as *;
+
+.game {
+    min-height: 100vh;
+    padding: 24px 80px;
+    background: $color-background;
+    color: $color-text;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__status {
+        display: flex;
+        align-items: center;
+        gap: 170px;
+    }
+
+    &__scores {
+        display: flex;
+        gap: 20px;
+        padding: 17px 20px;
+        background: rgba(#86e9d6, 0.2);
+        font-family: "Red Rose", sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    &__score {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+
+        &--blue {
+            color: #2bb1ff;
+        }
+
+        &--orange {
+            color: #f58e39;
+        }
+    }
+
+    &__current-player {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: "Red Rose", sans-serif;
+        font-size: 26px;
+        font-weight: 400;
+    }
+
+    &__exit-button {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 16px 24px;
+        border: 1px solid #4fd9bb;
+        background: #3f5754;
+        color: $color-text;
+        cursor: pointer;
+        font-family: "Red Rose", sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+    }
+}

@@ -3,6 +3,7 @@ export function getGameTemplate(): string {
     return `
             <section class="game">
             <header class="game__header">
+            <div class="game__status">
                 <div class="game__scores">
                     <div class="game__score game__score--blue">
                         <img class="game__score-icon" src="/icons/label-blue.svg" alt="">
@@ -20,6 +21,7 @@ export function getGameTemplate(): string {
                     <span>Current player:</span>
                     <img class="game__current-player-icon" id="current-player" src="/icons/label-blue.svg" alt="Blue">
                 </div>
+            </div>
 
                 <button class="game__exit-button" id="exit-button" type="button">
                     <img src="/icons/exit.svg" alt="">Exit game
