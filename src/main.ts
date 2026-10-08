@@ -31,11 +31,12 @@ function addSettingsListeners(): void {
     form.addEventListener("change", handleSettingsChange);
 }
 
-/** Saves the selected option and updates the summary bar. */
+/** Saves the selected option and updates summary and preview. */
 function handleSettingsChange(event: Event): void {
     const input = event.target as HTMLInputElement;
     saveSelection(input);
     updateSummary(input);
+    updatePreview();
 }
 
 /** Stores the selected option in the settings object. */
@@ -50,6 +51,13 @@ function updateSummary(input: HTMLInputElement): void {
     const label = input.parentElement as HTMLLabelElement;
     const summaryItem = document.getElementById(`summary-${input.name}`) as HTMLElement;
     summaryItem.innerText = label.innerText.trim();
+}
+
+/** Shows the preview image of the selected theme. */
+function updatePreview(): void {
+    const image = document.getElementById("theme-preview") as HTMLImageElement;
+    image.src = `/img/preview-${SETTINGS.theme}.svg`;
+    image.alt = `Preview of the ${SETTINGS.theme} theme`;
 }
 
 renderHome();

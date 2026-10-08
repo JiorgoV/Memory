@@ -60,7 +60,7 @@ export function getSettingsTemplate(): string {
                 </fieldset>
             </form>
             <div class="settings__preview">
-                <img class="settings__preview-image" src="/img/theme-visual.svg" alt="Preview of the code vibes theme">
+                <img class="settings__preview-image" id="theme-preview" src="/img/preview-code-vibes.svg" alt="Preview of the code vibes theme">
                 <div class="settings__summary">
                     <span class="settings__summary-item" id="summary-theme">Game theme</span>
                     <span class="settings__summary-item" id="summary-player">Player</span>
