@@ -12,6 +12,13 @@
 }
 
 @font-face {
+    font-family: "Almarai";
+    src: url("/fonts/almarai-bold.ttf") format("truetype");
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
     font-family: "Red Rose";
     src: url("/fonts/red-rose-bold.ttf") format("truetype");
     font-weight: 700;
@@ -131,7 +138,8 @@ body {
         line-height: 100%;
         color: $button-text;
 
-        &::after {  // gelbe linie
+        &::after {
+            // gelbe linie
             content: "";
             position: absolute;
             left: -10px;
@@ -141,7 +149,8 @@ body {
             background: $button-background;
         }
 
-        &::before { // gelbe raute
+        &::before {
+            // gelbe raute
             content: "";
             position: absolute;
             right: -14px;
@@ -153,10 +162,11 @@ body {
         }
     }
 
-        &__form {
+    &__form {
         display: flex;
         flex-direction: column;
         gap: 40px;
+        font-family: "Almarai", sans-serif;
     }
 
     &__form-group {
@@ -174,15 +184,22 @@ body {
         gap: 10px;
         margin-bottom: 12px;
         padding: 0;
+        font-size: 24px;
         font-weight: 700;
     }
 
-        &__option {
+    &__option {
         display: flex;
         align-items: center;
         gap: 10px;
         padding-left: 34px;
         cursor: pointer;
+        font-size: 20px;
+        font-weight: 400;
+
+        &:has(input:checked) {
+            font-weight: 700;
+        }
 
         input[type="radio"] {
             appearance: none;
@@ -209,5 +226,57 @@ body {
                 transform: scale(1);
             }
         }
+    }
+
+        &__preview {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    &__preview-image {
+        width: 460px;
+    }
+
+        &__summary {
+        display: flex;
+        align-items: center;
+        gap: 42px;
+        padding-left: 20px;
+        font-family: "Almarai", sans-serif;
+        font-size: 20px;
+        font-weight: 400;
+        background-color: $summary-background;
+        padding: 10px 10px 10px 20px;
+    }
+
+    &__summary-item {
+        position: relative;
+
+        &:not(:last-of-type)::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: -23px;
+            width: 4px;
+            height: 44px;
+            background: $button-background;
+            transform: translateY(-50%) rotate(20deg);
+        }
+    }
+
+    &__start-button {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 14px 20px;
+        border: none;
+        font-family: "Red Rose", sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        background-color: $button-background;
+        color: $button-text;
+        cursor: pointer;
+        transition: transform 0.2s ease;
     }
 }
