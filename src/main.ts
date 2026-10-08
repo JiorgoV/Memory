@@ -1,6 +1,7 @@
 import "./styles/style.scss";
 import { getHomeTemplate } from "./templates/home-template";
 import { getSettingsTemplate } from "./templates/settings-template";
+import { getGameTemplate } from "./templates/game-template";
 import type { BoardSize, GameSettings, PlayerColor, ThemeName } from "./types";
 
 const APP = document.getElementById("app") as HTMLElement;
@@ -25,18 +26,21 @@ function renderSettings(): void {
     addSettingsListeners();
 }
 
-/** Adds the change listener to the settings form. */
+/** Adds the listeners to the settings form and the start button. */
 function addSettingsListeners(): void {
     const form = document.querySelector(".settings__form") as HTMLFormElement;
+    const startButton = document.getElementById("start-button") as HTMLButtonElement;
     form.addEventListener("change", handleSettingsChange);
+    startButton.addEventListener("click", renderGame);
 }
 
-/** Saves the selected option and updates summary and preview. */
+/** Saves the selected option and updates summary, preview and start button. */
 function handleSettingsChange(event: Event): void {
     const input = event.target as HTMLInputElement;
     saveSelection(input);
     updateSummary(input);
     updatePreview();
+    updateStartButton();
 }
 
 /** Stores the selected option in the settings object. */
@@ -58,6 +62,17 @@ function updatePreview(): void {
     const image = document.getElementById("theme-preview") as HTMLImageElement;
     image.src = `/img/preview-${SETTINGS.theme}.svg`;
     image.alt = `Preview of the ${SETTINGS.theme} theme`;
+}
+
+/** Enables the start button once player and size are selected. */
+function updateStartButton(): void {
+    const startButton = document.getElementById("start-button") as HTMLButtonElement;
+    startButton.disabled = SETTINGS.player === null || SETTINGS.size === null;
+}
+
+/** Renders the game screen into the app container. */
+function renderGame(): void {
+    APP.innerHTML = getGameTemplate();
 }
 
 renderHome();
