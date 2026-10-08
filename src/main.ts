@@ -2,10 +2,14 @@ import "./styles/style.scss";
 import { getHomeTemplate } from "./templates/home-template";
 import { getSettingsTemplate } from "./templates/settings-template";
 import { getGameTemplate } from "./templates/game-template";
+import { createCards } from "./game";
+import { getCardTemplate } from "./templates/game-template";
 import type { BoardSize, GameSettings, PlayerColor, ThemeName } from "./types";
 
 const APP = document.getElementById("app") as HTMLElement;
 const SETTINGS: GameSettings = { theme: "code-vibes", player: null, size: null };
+
+let cards: Card[] = [];
 
 /** Renders the home screen into the app container. */
 function renderHome(): void {
@@ -72,7 +76,17 @@ function updateStartButton(): void {
 
 /** Renders the game screen into the app container. */
 function renderGame(): void {
+    if (SETTINGS.size === null) return;
     APP.innerHTML = getGameTemplate();
+    cards = createCards(SETTINGS.size);
+    renderBoard(SETTINGS.size);
+}
+
+/** Renders all cards into the game board. */
+function renderBoard(size: BoardSize): void {
+    const board = document.getElementById("game-board") as HTMLElement;
+    board.classList.add(`game__board--${size}`);
+    board.innerHTML = cards.map((card) => getCardTemplate(card, SETTINGS.theme)).join("");
 }
 
 renderHome();

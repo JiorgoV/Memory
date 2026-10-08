@@ -64,4 +64,32 @@
         font-size: 24px;
         font-weight: 700;
     }
+
+    &__board {
+        display: grid;
+        justify-content: center;
+        gap: 16px;
+        margin-top: 40px;
+
+        &--small {
+            grid-template-columns: repeat(4, 120px);
+        }
+
+        &--medium,
+        &--large {
+            grid-template-columns: repeat(6, 120px);
+        }
+    }
+
+    &__card {
+        padding: 0;
+        border: none;
+        background: none;
+        cursor: pointer;
+    }
+
+    &__card-back {
+        display: block;
+        width: 100%;
+    }
 }

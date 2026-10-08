@@ -1,3 +1,5 @@
+import type { Card, ThemeName } from "../types";
+
 /** Returns the HTML for the game screen. */
 export function getGameTemplate(): string {
     return `
@@ -30,5 +32,14 @@ export function getGameTemplate(): string {
 
             <div class="game__board" id="game-board"></div>
         </section>
+    `;
+}
+
+/** Returns the HTML for a single card. */
+export function getCardTemplate(card: Card, theme: ThemeName): string {
+    return `
+    <button class="game__card" type="button" data-id="${card.id}" aria-label="Memory card">
+        <img class="game__card-back" src="/img/${theme}/back.svg" alt="">
+    </button>
     `;
 }
