@@ -1,0 +1,200 @@
+@use "variables" as *;
+
+.settings {
+    min-height: 100vh;
+    padding: 45px;
+    background: #ffffff;
+
+    &__layout {
+        display: flex;
+        gap: 450px;
+    }
+
+    &__title {
+        position: relative;
+        width: fit-content;
+        margin: 0 0 40px;
+        font-family: "Red Rose", sans-serif;
+        font-size: 54px;
+        font-weight: 700;
+        font-style: bold;
+        line-height: 100%;
+        color: $button-text;
+
+        &::after {
+            // gelbe linie
+            content: "";
+            position: absolute;
+            left: -10px;
+            right: -10px;
+            bottom: -8px;
+            height: 3px;
+            background: $button-background;
+        }
+
+        &::before {
+            // gelbe raute
+            content: "";
+            position: absolute;
+            right: -14px;
+            bottom: -11px;
+            width: 9px;
+            height: 9px;
+            background: $button-background;
+            transform: rotate(45deg);
+        }
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+        gap: 40px;
+        font-family: "Almarai", sans-serif;
+    }
+
+    &__form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
+
+    &__form-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 12px;
+        padding: 0;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    &__option {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-left: 34px;
+        cursor: pointer;
+        font-size: 20px;
+        font-weight: 400;
+
+        &::after {
+            content: "";
+            width: 0;
+            height: 2px;
+            background: $button-background;
+            transition: width 0.2s ease;
+        }
+
+        &::before {
+            content: "";
+            order: 1;
+            width: 8px;
+            height: 8px;
+            margin-left: -14px;
+            background: $button-background;
+            transform: rotate(45deg) scale(0);
+            transition: transform 0.2s ease;
+        }
+
+        &:has(input:checked) {
+            font-weight: 700;
+        }
+
+        &:has(input:checked)::after {
+            width: 36px;
+        }
+
+        &:has(input:checked)::before {
+            transform: rotate(45deg) scale(1);
+        }
+
+        input[type="radio"] {
+            appearance: none;
+            display: grid;
+            place-content: center;
+            width: 16px;
+            height: 16px;
+            margin: 0;
+            border: 2px solid $color-background;
+            border-radius: 50%;
+            cursor: pointer;
+
+            &::before {
+                content: "";
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: $color-background;
+                transform: scale(0);
+                transition: transform 0.15s ease;
+            }
+
+            &:checked::before {
+                transform: scale(1);
+            }
+        }
+    }
+
+        &__preview {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    &__preview-image {
+        align-self: flex-end;
+        width: 460px;
+    }
+
+        &__summary {
+        display: grid;
+        grid-template-columns: 175px 75px 90px auto;
+        align-items: center;
+        gap: 42px;
+        padding: 10px 10px 10px 20px;
+        font-family: "Almarai", sans-serif;
+        font-size: 20px;
+        font-weight: 400;
+        background-color: $summary-background;
+    }
+
+    &__summary-item {
+        position: relative;
+        white-space: nowrap;
+
+        &:not(:last-of-type)::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: -23px;
+            width: 4px;
+            height: 44px;
+            background: $button-background;
+            transform: translateY(-50%) rotate(20deg);
+        }
+    }
+
+    &__start-button {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 14px 20px;
+        border: none;
+        font-family: "Red Rose", sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        background-color: $button-background;
+        color: $button-text;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+
+                &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+}
