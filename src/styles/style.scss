@@ -165,6 +165,7 @@ body {
     &__form {
         display: flex;
         flex-direction: column;
+        width: 400px;
         gap: 40px;
         font-family: "Almarai", sans-serif;
     }
@@ -267,19 +268,20 @@ body {
     }
 
         &__summary {
-        display: flex;
+        display: grid;
+        grid-template-columns: 175px 75px 90px auto;
         align-items: center;
         gap: 42px;
-        padding-left: 20px;
+        padding: 10px 10px 10px 20px;
         font-family: "Almarai", sans-serif;
         font-size: 20px;
         font-weight: 400;
         background-color: $summary-background;
-        padding: 10px 10px 10px 20px;
     }
 
     &__summary-item {
         position: relative;
+        white-space: nowrap;
 
         &:not(:last-of-type)::after {
             content: "";
