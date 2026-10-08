@@ -197,8 +197,35 @@ body {
         font-size: 20px;
         font-weight: 400;
 
+        &::after {
+            content: "";
+            width: 0;
+            height: 2px;
+            background: $button-background;
+            transition: width 0.2s ease;
+        }
+
+        &::before {
+            content: "";
+            order: 1;
+            width: 8px;
+            height: 8px;
+            margin-left: -14px;
+            background: $button-background;
+            transform: rotate(45deg) scale(0);
+            transition: transform 0.2s ease;
+        }
+
         &:has(input:checked) {
             font-weight: 700;
+        }
+
+        &:has(input:checked)::after {
+            width: 36px;
+        }
+
+        &:has(input:checked)::before {
+            transform: rotate(45deg) scale(1);
         }
 
         input[type="radio"] {
@@ -235,6 +262,7 @@ body {
     }
 
     &__preview-image {
+        align-self: flex-end;
         width: 460px;
     }
 
