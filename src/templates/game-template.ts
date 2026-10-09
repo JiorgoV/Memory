@@ -1,19 +1,19 @@
 import type { Card, ThemeName } from "../types";
 
 /** Returns the HTML for the game screen. */
-export function getGameTemplate(): string {
+export function getGameTemplate(theme: ThemeName): string {
     return `
             <section class="game">
             <header class="game__header">
             <div class="game__status">
                 <div class="game__scores">
                     <div class="game__score game__score--blue">
-                        <img class="game__score-icon" src="/icons/label-blue.svg" alt="">
+                        <img class="game__score-icon" src="/img/${theme}/player-blue.svg" alt="">
                         <span>Blue</span>
                         <span class="game__score-value" id="score-blue">0</span>
                     </div>
                     <div class="game__score game__score--orange">
-                        <img class="game__score-icon" src="/icons/label-orange.svg" alt="">
+                        <img class="game__score-icon" src="/img/${theme}/player-orange.svg" alt="">
                         <span>Orange</span>
                         <span class="game__score-value" id="score-orange">0</span>
                     </div>
@@ -21,7 +21,7 @@ export function getGameTemplate(): string {
 
                 <div class="game__current-player">
                     <span>Current player:</span>
-                    <img class="game__current-player-icon" id="current-player" src="/icons/label-blue.svg" alt="Blue">
+                    <img class="game__current-player-icon" id="current-player" src="/img/${theme}/player-blue.svg" alt="Blue">
                 </div>
             </div>
 

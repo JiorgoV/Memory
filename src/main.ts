@@ -1,9 +1,9 @@
 import "./styles/style.scss";
 import { getHomeTemplate } from "./templates/home-template";
 import { getSettingsTemplate } from "./templates/settings-template";
-import { getGameTemplate } from "./templates/game-template";
+import { getCardTemplate, getGameTemplate } from "./templates/game-template";
 import { createCards } from "./game";
-import { getCardTemplate } from "./templates/game-template";
+
 import type { BoardSize, Card, GameSettings, PlayerColor, ThemeName } from "./types";
 
 const APP = document.getElementById("app") as HTMLElement;
@@ -83,7 +83,7 @@ function updateStartButton(): void {
 /** Renders the game screen into the app container. */
 function renderGame(): void {
     if (SETTINGS.size === null || SETTINGS.player === null) return;
-    APP.innerHTML = getGameTemplate();
+    APP.innerHTML = getGameTemplate(SETTINGS.theme);
     resetGameState(SETTINGS.size, SETTINGS.player);
     renderBoard(SETTINGS.size);
     updateCurrentPlayer();
@@ -182,7 +182,7 @@ function switchPlayer(): void {
 /** Shows the current player's icon in the header. */
 function updateCurrentPlayer(): void {
     const icon = document.getElementById("current-player") as HTMLImageElement;
-    icon.src = `/icons/label-${currentPlayer}.svg`;
+    icon.src = `/img/${SETTINGS.theme}/current-${currentPlayer}.svg`;
     icon.alt = currentPlayer;
 }
 
