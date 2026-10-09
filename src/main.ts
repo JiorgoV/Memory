@@ -9,10 +9,13 @@ import type { BoardSize, Card, GameSettings, PlayerColor, ThemeName } from "./ty
 const APP = document.getElementById("app") as HTMLElement;
 const SETTINGS: GameSettings = { theme: "code-vibes", player: null, size: null };
 const FLIP_BACK_DELAY = 1000;
+const POINTS_PER_MATCH = 1;
 
 let cards: Card[] = [];
 let flippedCards: Card[] = [];
 let isLocked = false;
+let currentPlayer: PlayerColor = "blue";
+let scores: Record<PlayerColor, number> = { blue: 0, orange: 0 };
 
 /** Renders the home screen into the app container. */
 function renderHome(): void {
@@ -79,13 +82,21 @@ function updateStartButton(): void {
 
 /** Renders the game screen into the app container. */
 function renderGame(): void {
-    if (SETTINGS.size === null) return;
+    if (SETTINGS.size === null || SETTINGS.player === null) return;
     APP.innerHTML = getGameTemplate();
-    cards = createCards(SETTINGS.size);
+    resetGameState(SETTINGS.size, SETTINGS.player);
+    renderBoard(SETTINGS.size);
+    updateCurrentPlayer();
+    addGameListeners();
+}
+
+/** Resets all game variables for a new round. */
+function resetGameState(size: BoardSize, player: PlayerColor): void {
+    cards = createCards(size);
     flippedCards = [];
     isLocked = false;
-    renderBoard(SETTINGS.size);
-    addGameListeners();
+    currentPlayer = player;
+    scores = { blue: 0, orange: 0 };
 }
 
 /** Renders all cards into the game board. */
@@ -131,12 +142,6 @@ function checkMatch(): void {
     else handleMismatch();
 }
 
-/** Marks both flipped cards as matched. */
-function handleMatch(): void {
-    flippedCards.forEach((card) => (card.state = "matched"));
-    flippedCards = [];
-}
-
 /** Locks the board and turns the cards back after a delay. */
 function handleMismatch(): void {
     isLocked = true;
@@ -151,6 +156,34 @@ function hideFlippedCards(): void {
     });
     flippedCards = [];
     isLocked = false;
+    switchPlayer();
+}
+
+/** Marks both flipped cards as matched and adds a point. */
+function handleMatch(): void {
+    flippedCards.forEach((card) => (card.state = "matched"));
+    flippedCards = [];
+    scores[currentPlayer] += POINTS_PER_MATCH;
+    updateScore();
+}
+
+/** Shows the current player's score in the header. */
+function updateScore(): void {
+    const scoreElement = document.getElementById(`score-${currentPlayer}`) as HTMLElement;
+    scoreElement.innerText = String(scores[currentPlayer]);
+}
+
+/** Passes the turn to the other player. */
+function switchPlayer(): void {
+    currentPlayer = currentPlayer === "blue" ? "orange" : "blue";
+    updateCurrentPlayer();
+}
+
+/** Shows the current player's icon in the header. */
+function updateCurrentPlayer(): void {
+    const icon = document.getElementById("current-player") as HTMLImageElement;
+    icon.src = `/icons/label-${currentPlayer}.svg`;
+    icon.alt = currentPlayer;
 }
 
 renderHome();
