@@ -1,0 +1,30 @@
+@use "variables" as *;
+
+.game-over {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: $color-background;
+    color: $color-text;
+
+        &__title {
+        margin: 0 0 60px;
+        font-family: "Red Rose", sans-serif;
+        font-size: 187px;
+        font-weight: 700;
+        line-height: 100%;
+        color: #4dd5bc;
+        text-shadow:
+            -7px 0 8px rgba(#4dd5bc, 0.5),
+            -4px -2px 0 #ffffff;
+    }
+
+    &__subtitle {
+        margin: 0 0 16px;
+        font-family: "Red Rose", sans-serif;
+        font-size: 20px;
+        font-weight: 400;
+    }
+}

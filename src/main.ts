@@ -2,6 +2,7 @@ import "./styles/style.scss";
 import { getHomeTemplate } from "./templates/home-template";
 import { getSettingsTemplate } from "./templates/settings-template";
 import { getCardTemplate, getGameTemplate } from "./templates/game-template";
+import { getGameOverTemplate } from "./templates/game-over-template";
 import { createCards } from "./game";
 
 import type { BoardSize, Card, GameSettings, PlayerColor, ThemeName } from "./types";
@@ -10,6 +11,7 @@ const APP = document.getElementById("app") as HTMLElement;
 const SETTINGS: GameSettings = { theme: "code-vibes", player: null, size: null };
 const FLIP_BACK_DELAY = 1000;
 const POINTS_PER_MATCH = 1;
+const GAME_OVER_DELAY = 1000;
 
 let cards: Card[] = [];
 let flippedCards: Card[] = [];
@@ -168,6 +170,7 @@ function handleMatch(): void {
     flippedCards = [];
     scores[currentPlayer] += POINTS_PER_MATCH;
     updateScore();
+    if (isGameOver()) setTimeout(renderGameOver, GAME_OVER_DELAY);
 }
 
 /** Shows the current player's score in the header. */
@@ -187,6 +190,16 @@ function updateCurrentPlayer(): void {
     const icon = document.getElementById("current-player") as HTMLImageElement;
     icon.src = `/img/${SETTINGS.theme}/current-${currentPlayer}.svg`;
     icon.alt = currentPlayer;
+}
+
+/** Checks whether all cards have been matched. */
+function isGameOver(): boolean {
+    return cards.every((card) => card.state === "matched");
+}
+
+/** Renders the game over screen into the app container. */
+function renderGameOver(): void {
+    APP.innerHTML = getGameOverTemplate(scores, SETTINGS.theme);
 }
 
 renderHome();
