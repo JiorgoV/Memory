@@ -102,7 +102,7 @@ function resetGameState(size: BoardSize, player: PlayerColor): void {
 /** Renders all cards into the game board. */
 function renderBoard(size: BoardSize): void {
     const board = document.getElementById("game-board") as HTMLElement;
-    board.classList.add(`game__board--${size}`);
+    board.classList.add(`game__board--${size}`, `game__board--${SETTINGS.theme}`);
     board.innerHTML = cards.map((card) => getCardTemplate(card, SETTINGS.theme)).join("");
 }
 
@@ -161,7 +161,10 @@ function hideFlippedCards(): void {
 
 /** Marks both flipped cards as matched and adds a point. */
 function handleMatch(): void {
-    flippedCards.forEach((card) => (card.state = "matched"));
+    flippedCards.forEach((card) => {
+        card.state = "matched";
+        getCardElement(card).classList.add("game__card--matched");
+    });
     flippedCards = [];
     scores[currentPlayer] += POINTS_PER_MATCH;
     updateScore();

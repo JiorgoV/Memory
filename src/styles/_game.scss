@@ -65,7 +65,7 @@
         font-weight: 700;
     }
 
-    &__board {
+        &__board {
         display: grid;
         justify-content: center;
         gap: 16px;
@@ -78,6 +78,22 @@
         &--medium,
         &--large {
             grid-template-columns: repeat(6, 120px);
+        }
+
+        &--code-vibes {
+            --match-color: #4dd5bc;
+        }
+
+        &--gaming {
+            --match-color: #ed1b764d;
+        }
+
+        &--da-projects {
+            --match-color: #1e7594;
+        }
+
+        &--foods {
+            --match-color: #f3832d;
         }
     }
 
@@ -114,5 +130,10 @@
 
     &__card-front {
         transform: rotateY(180deg);
+    }
+
+    &__card--matched &__card-front {
+        outline: 4px solid var(--match-color);
+        outline-offset: -4px;
     }
 }
