@@ -10,10 +10,19 @@ export function createCards(size: BoardSize): Card[] {
         cards.push(createCard(cards.length, motif));
         cards.push(createCard(cards.length, motif));
     }
-    return cards;
+    return shuffleCards(cards);
 }
 
 /** Creates a single hidden card. */
 function createCard(id: number, motif: number): Card {
     return { id, motif, state: "hidden" };
+}
+
+/** Shuffles the cards into a random order. */
+function shuffleCards(cards: Card[]): Card[] {
+    for (let i = cards.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [cards[i], cards[j]] = [cards[j], cards[i]];
+    }
+    return cards;
 }

@@ -39,7 +39,10 @@ export function getGameTemplate(): string {
 export function getCardTemplate(card: Card, theme: ThemeName): string {
     return `
     <button class="game__card" type="button" data-id="${card.id}" aria-label="Memory card">
-        <img class="game__card-back" src="/img/${theme}/back.svg" alt="">
+        <span class="game__card-inner">
+            <img class="game__card-back" src="/img/${theme}/back.svg" alt="">
+            <img class="game__card-front" src="/img/${theme}/${card.motif}.svg" alt="">
+        </span>
     </button>
     `;
 }

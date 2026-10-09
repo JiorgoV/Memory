@@ -4,7 +4,7 @@ import { getSettingsTemplate } from "./templates/settings-template";
 import { getGameTemplate } from "./templates/game-template";
 import { createCards } from "./game";
 import { getCardTemplate } from "./templates/game-template";
-import type { BoardSize, GameSettings, PlayerColor, ThemeName } from "./types";
+import type { BoardSize, Card, GameSettings, PlayerColor, ThemeName } from "./types";
 
 const APP = document.getElementById("app") as HTMLElement;
 const SETTINGS: GameSettings = { theme: "code-vibes", player: null, size: null };
@@ -80,6 +80,7 @@ function renderGame(): void {
     APP.innerHTML = getGameTemplate();
     cards = createCards(SETTINGS.size);
     renderBoard(SETTINGS.size);
+    addGameListeners();
 }
 
 /** Renders all cards into the game board. */
@@ -87,6 +88,20 @@ function renderBoard(size: BoardSize): void {
     const board = document.getElementById("game-board") as HTMLElement;
     board.classList.add(`game__board--${size}`);
     board.innerHTML = cards.map((card) => getCardTemplate(card, SETTINGS.theme)).join("");
+}
+
+/** Adds the click listener to the game board. */
+function addGameListeners(): void {
+    const board = document.getElementById("game-board") as HTMLElement;
+    board.addEventListener("click", handleCardClick);
+}
+
+/** Flips the clicked card. */
+function handleCardClick(event: MouseEvent): void {
+    const target = event.target as HTMLElement;
+    const cardElement = target.closest(".game__card");
+    if (cardElement === null) return;
+    cardElement.classList.toggle("game__card--flipped");
 }
 
 renderHome();
