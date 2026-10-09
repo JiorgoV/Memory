@@ -8,8 +8,11 @@ import type { BoardSize, Card, GameSettings, PlayerColor, ThemeName } from "./ty
 
 const APP = document.getElementById("app") as HTMLElement;
 const SETTINGS: GameSettings = { theme: "code-vibes", player: null, size: null };
+const FLIP_BACK_DELAY = 1000;
 
 let cards: Card[] = [];
+let flippedCards: Card[] = [];
+let isLocked = false;
 
 /** Renders the home screen into the app container. */
 function renderHome(): void {
@@ -79,6 +82,8 @@ function renderGame(): void {
     if (SETTINGS.size === null) return;
     APP.innerHTML = getGameTemplate();
     cards = createCards(SETTINGS.size);
+    flippedCards = [];
+    isLocked = false;
     renderBoard(SETTINGS.size);
     addGameListeners();
 }
@@ -96,12 +101,56 @@ function addGameListeners(): void {
     board.addEventListener("click", handleCardClick);
 }
 
-/** Flips the clicked card. */
+/** Handles a click on the game board. */
 function handleCardClick(event: MouseEvent): void {
     const target = event.target as HTMLElement;
-    const cardElement = target.closest(".game__card");
-    if (cardElement === null) return;
-    cardElement.classList.toggle("game__card--flipped");
+    const cardElement = target.closest(".game__card") as HTMLElement | null;
+    if (cardElement === null || isLocked) return;
+    const card = cards.find((c) => c.id === Number(cardElement.dataset.id));
+    if (card === undefined || card.state !== "hidden") return;
+    flipCard(card);
+    if (flippedCards.length === 2) checkMatch();
+}
+
+/** Turns a card face up and remembers it. */
+function flipCard(card: Card): void {
+    card.state = "flipped";
+    flippedCards.push(card);
+    getCardElement(card).classList.add("game__card--flipped");
+}
+
+/** Returns the DOM element that belongs to a card. */
+function getCardElement(card: Card): HTMLElement {
+    return document.querySelector(`[data-id="${card.id}"]`) as HTMLElement;
+}
+
+/** Compares the two flipped cards. */
+function checkMatch(): void {
+    const [first, second] = flippedCards;
+    if (first.motif === second.motif) handleMatch();
+    else handleMismatch();
+}
+
+/** Marks both flipped cards as matched. */
+function handleMatch(): void {
+    flippedCards.forEach((card) => (card.state = "matched"));
+    flippedCards = [];
+}
+
+/** Locks the board and turns the cards back after a delay. */
+function handleMismatch(): void {
+    isLocked = true;
+    setTimeout(hideFlippedCards, FLIP_BACK_DELAY);
+}
+
+/** Turns the flipped cards face down and unlocks the board. */
+function hideFlippedCards(): void {
+    flippedCards.forEach((card) => {
+        card.state = "hidden";
+        getCardElement(card).classList.remove("game__card--flipped");
+    });
+    flippedCards = [];
+    isLocked = false;
 }
 
 renderHome();
