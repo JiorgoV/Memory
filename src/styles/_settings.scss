@@ -4,6 +4,7 @@
     min-height: 100vh;
     padding: 45px;
     background: #ffffff;
+    color: $color-background;
 
     &__layout {
         display: flex;
@@ -17,7 +18,6 @@
         font-family: "Red Rose", sans-serif;
         font-size: 54px;
         font-weight: 700;
-        font-style: bold;
         line-height: 100%;
         color: $button-text;
 
