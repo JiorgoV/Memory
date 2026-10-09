@@ -2,6 +2,7 @@ export type PlayerColor = "blue" | "orange";
 export type ThemeName = "code-vibes" | "gaming" | "da-projects" | "foods";
 export type BoardSize = "small" | "medium" | "large";
 export type CardState = "hidden" | "flipped" | "matched";
+export type GameResult = PlayerColor | "draw";
 
 export interface GameSettings {
     theme: ThemeName;

@@ -4,14 +4,16 @@ import { getSettingsTemplate } from "./templates/settings-template";
 import { getCardTemplate, getGameTemplate } from "./templates/game-template";
 import { getGameOverTemplate } from "./templates/game-over-template";
 import { createCards } from "./game";
+import { getResultTemplate } from "./templates/result-template";
 
-import type { BoardSize, Card, GameSettings, PlayerColor, ThemeName } from "./types";
+import type { BoardSize, Card, GameSettings, PlayerColor, ThemeName, GameResult } from "./types";
 
 const APP = document.getElementById("app") as HTMLElement;
 const SETTINGS: GameSettings = { theme: "code-vibes", player: null, size: null };
 const FLIP_BACK_DELAY = 1000;
 const POINTS_PER_MATCH = 1;
 const GAME_OVER_DELAY = 1000;
+const RESULT_DELAY = 3000;
 
 let cards: Card[] = [];
 let flippedCards: Card[] = [];
@@ -34,6 +36,7 @@ function addHomeListeners(): void {
 
 /** Renders the settings screen into the app container. */
 function renderSettings(): void {
+    resetSettings();
     APP.innerHTML = getSettingsTemplate();
     addSettingsListeners();
 }
@@ -197,9 +200,31 @@ function isGameOver(): boolean {
     return cards.every((card) => card.state === "matched");
 }
 
-/** Renders the game over screen into the app container. */
+/** Renders the game over screen and switches to the result after a delay. */
 function renderGameOver(): void {
     APP.innerHTML = getGameOverTemplate(scores, SETTINGS.theme);
+    setTimeout(renderResult, RESULT_DELAY);
+}
+
+/** Determines the winner or a draw from the scores. */
+function getResult(): GameResult {
+    if (scores.blue > scores.orange) return "blue";
+    if (scores.orange > scores.blue) return "orange";
+    return "draw";
+}
+
+/** Renders the result screen into the app container. */
+function renderResult(): void {
+    APP.innerHTML = getResultTemplate(getResult(), SETTINGS.theme);
+    const backButton = document.getElementById("back-button") as HTMLButtonElement;
+    backButton.addEventListener("click", renderHome);
+}
+
+/** Resets the settings to their default values. */
+function resetSettings(): void {
+    SETTINGS.theme = "code-vibes";
+    SETTINGS.player = null;
+    SETTINGS.size = null;
 }
 
 renderHome();
