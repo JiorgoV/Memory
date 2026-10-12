@@ -20,6 +20,7 @@ let flippedCards: Card[] = [];
 let isLocked = false;
 let currentPlayer: PlayerColor = "blue";
 let scores: Record<PlayerColor, number> = { blue: 0, orange: 0 };
+let pendingTimeout = 0;
 
 /** Renders the home screen into the app container. */
 function renderHome(): void {
@@ -126,7 +127,7 @@ function addDialogListeners(): void {
     const quitButton = document.getElementById("quit-game") as HTMLButtonElement;
     exitButton.addEventListener("click", () => dialog.showModal());
     backButton.addEventListener("click", () => dialog.close());
-    quitButton.addEventListener("click", renderHome);
+    quitButton.addEventListener("click", quitGame);
     dialog.addEventListener("click", (event) => closeOnBackdropClick(event, dialog));
 }
 
@@ -168,7 +169,7 @@ function checkMatch(): void {
 /** Locks the board and turns the cards back after a delay. */
 function handleMismatch(): void {
     isLocked = true;
-    setTimeout(hideFlippedCards, FLIP_BACK_DELAY);
+    pendingTimeout = window.setTimeout(hideFlippedCards, FLIP_BACK_DELAY);
 }
 
 /** Turns the flipped cards face down and unlocks the board. */
@@ -191,7 +192,7 @@ function handleMatch(): void {
     flippedCards = [];
     scores[currentPlayer] += POINTS_PER_MATCH;
     updateScore();
-    if (isGameOver()) setTimeout(renderGameOver, GAME_OVER_DELAY);
+    if (isGameOver()) pendingTimeout = window.setTimeout(renderGameOver, GAME_OVER_DELAY);
 }
 
 /** Shows the current player's score in the header. */
@@ -243,6 +244,12 @@ function resetSettings(): void {
     SETTINGS.theme = "code-vibes";
     SETTINGS.player = null;
     SETTINGS.size = null;
+}
+
+/** Stops pending timers and returns to the home screen. */
+function quitGame(): void {
+    clearTimeout(pendingTimeout);
+    renderHome();
 }
 
 renderHome();
