@@ -63,6 +63,15 @@
         font-family: "Red Rose", sans-serif;
         font-size: 24px;
         font-weight: 700;
+        transition: background 0.2s ease, box-shadow 0.2s ease;
+
+         &:hover {
+            background: rgba(#86e9d6, 0.26);
+            border-color: #4dd5bc;
+            box-shadow:
+                inset 0 0 0 2px #4dd5bc,
+                4px 4px 6px rgba(#4dd5bc, 0.2);
+        }
     }
 
         &__board {
