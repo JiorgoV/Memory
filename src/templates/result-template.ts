@@ -11,6 +11,7 @@ export function getResultTemplate(result: GameResult, theme: ThemeName): string 
     const texts = RESULT_TEXTS[result];
     return `
     <section class="result result--${result}">
+        ${result !== "draw" ? `<img class="result__confetti" src="/img/${theme}/confetti.svg" alt="">` : ""}
         <p class="result__subtitle">${texts.subtitle}</p>
         <h1 class="result__title">${texts.title}</h1>
         <img class="result__icon" src="/img/${theme}/result-${result}.svg" alt="">

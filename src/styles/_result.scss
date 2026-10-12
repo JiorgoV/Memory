@@ -2,7 +2,8 @@
 
 .result {
     --result-color: #4dd5bc;
-
+    position: relative;
+    overflow: hidden;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -10,6 +11,26 @@
     align-items: center;
     background: $color-background;
     color: $color-text;
+
+    &__confetti {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: confetti-drop 0.8s ease-out;
+    }
+
+    @keyframes confetti-drop {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
 
     &--blue {
         --result-color: #2bb1ff;
