@@ -66,7 +66,7 @@ export function getSettingsTemplate(): string {
                     <span class="settings__summary-item" id="summary-player">Player</span>
                     <span class="settings__summary-item" id="summary-size">Board size</span>
                     <button class="settings__start-button" id="start-button" type="button" disabled>
-                        <img src="/icons/smart-display.svg" alt="">
+                        <img class="settings__start-button-icon" src="/icons/smart-display.svg" alt="">
                         <span class="settings__start-button-text">Start</span>
                     </button>
                 </div>

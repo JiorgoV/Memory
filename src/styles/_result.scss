@@ -1,0 +1,66 @@
+@use "variables" as *;
+
+.result {
+    --result-color: #4dd5bc;
+
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: $color-background;
+    color: $color-text;
+
+    &--blue {
+        --result-color: #2bb1ff;
+    }
+
+    &--orange {
+        --result-color: #f58e39;
+    }
+
+    &__subtitle {
+        margin: 0 0 16px;
+        font-family: "Red Rose", sans-serif;
+        font-size: 40px;
+        font-weight: 400;
+    }
+
+    &__title {
+        margin: 0 0 40px;
+        font-family: "Red Rose", sans-serif;
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 100%;
+        text-transform: uppercase;
+        color: var(--result-color);
+    }
+
+    &--draw &__title {
+        font-size: 96px;
+        text-shadow:
+            -7px 0 8px rgba(#4dd5bc, 0.5),
+            -4px -2px 0 #ffffff;
+    }
+
+    &__icon {
+        
+        margin-bottom: 40px;
+    }
+
+    &__button {
+        padding: 10px 16px;
+        border: 1px solid #4fd9bb;
+        background: #3f5754;
+        color: $color-text;
+        font-family: "Red Rose", sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+}

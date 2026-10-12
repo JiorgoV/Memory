@@ -178,7 +178,7 @@
         }
     }
 
-    &__start-button {
+        &__start-button {
         display: flex;
         align-items: center;
         gap: 8px;
@@ -192,9 +192,23 @@
         cursor: pointer;
         transition: transform 0.2s ease;
 
-                &:disabled {
+        &:disabled {
             opacity: 0.5;
             cursor: not-allowed;
+        }
+
+        &:not(:disabled):hover {
+            transform: scale(1.1);
+        }
+
+        &-icon {
+            width: 44px;
+            height: 32px;
+            transition: transform 0.2s ease;
+        }
+
+        &:not(:disabled):hover &-icon {
+            transform: rotate(-15deg);
         }
     }
 }
