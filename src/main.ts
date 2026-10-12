@@ -111,10 +111,28 @@ function renderBoard(size: BoardSize): void {
     board.innerHTML = cards.map((card) => getCardTemplate(card, SETTINGS.theme)).join("");
 }
 
-/** Adds the click listener to the game board. */
+/** Adds the listeners for the game board and the exit dialog. */
 function addGameListeners(): void {
     const board = document.getElementById("game-board") as HTMLElement;
     board.addEventListener("click", handleCardClick);
+    addDialogListeners();
+}
+
+/** Adds the listeners that open and close the exit dialog. */
+function addDialogListeners(): void {
+    const dialog = document.getElementById("exit-dialog") as HTMLDialogElement;
+    const exitButton = document.getElementById("exit-button") as HTMLButtonElement;
+    const backButton = document.getElementById("back-to-game") as HTMLButtonElement;
+    const quitButton = document.getElementById("quit-game") as HTMLButtonElement;
+    exitButton.addEventListener("click", () => dialog.showModal());
+    backButton.addEventListener("click", () => dialog.close());
+    quitButton.addEventListener("click", renderHome);
+    dialog.addEventListener("click", (event) => closeOnBackdropClick(event, dialog));
+}
+
+/** Closes the dialog when the click landed outside its content. */
+function closeOnBackdropClick(event: MouseEvent, dialog: HTMLDialogElement): void {
+    if (event.target === dialog) dialog.close();
 }
 
 /** Handles a click on the game board. */

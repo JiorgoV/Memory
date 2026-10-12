@@ -136,4 +136,62 @@
         outline: 4px solid var(--match-color);
         outline-offset: -4px;
     }
+
+        &__dialog {
+        padding: 0;
+        border: none;
+
+        &::backdrop {
+            background: rgba(#000000, 0.5);
+        }
+    }
+
+    &__dialog-content {
+        padding: 32px 40px;
+        text-align: center;
+        background: #ffffff;
+    }
+
+    &__dialog-text {
+        margin: 0 0 32px;
+        font-family: "Red Rose", sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        color: $color-background;
+    }
+
+    &__dialog-actions {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+    }
+
+        &__dialog-button {
+        padding: 10px 16px;
+        border: 2px solid #4dd5bc;
+        font-family: "Red Rose", sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        background: #4dd5bc;
+        color: #ffffff;
+        cursor: pointer;
+        transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+
+        &:hover {
+            background: #66cfbcb2;
+            border-color: #3abca4;
+            box-shadow: inset 0 0 0 1px #3abca4;
+        }
+
+        &--secondary {
+            background: rgba(#86e9d6, 0.14);
+            color: #4dd5bc;
+
+            &:hover {
+                background: rgba(#86e9d6, 0.3);
+                border-color: #4dd5bc;
+                box-shadow: inset 0 0 0 1px #4dd5bc;
+            }
+        }
+    }
 }

@@ -31,6 +31,17 @@ export function getGameTemplate(theme: ThemeName): string {
             </header>
 
             <div class="game__board" id="game-board"></div>
+
+                <dialog class="game__dialog" id="exit-dialog">
+                    <div class="game__dialog-content">
+                        <p class="game__dialog-text">Are you sure you want to quit the game?</p>
+                        <div class="game__dialog-actions">
+                            <button class="game__dialog-button" id="back-to-game" type="button">Back to game</button>
+                            <button class="game__dialog-button game__dialog-button--secondary" id="quit-game" type="button">Exit game</button>
+                        </div>
+                    </div>
+                </dialog>
+            
         </section>
     `;
 }
