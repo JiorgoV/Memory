@@ -89,6 +89,7 @@ function updateStartButton(): void {
 /** Renders the game screen into the app container. */
 function renderGame(): void {
     if (SETTINGS.size === null || SETTINGS.player === null) return;
+    APP.dataset.theme = SETTINGS.theme;
     APP.innerHTML = getGameTemplate(SETTINGS.theme);
     resetGameState(SETTINGS.size, SETTINGS.player);
     renderBoard(SETTINGS.size);

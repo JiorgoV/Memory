@@ -3,13 +3,16 @@
 .game {
     min-height: 100vh;
     padding: 24px 80px;
-    background: $color-background;
+    background: var(--theme-game-background);
     color: $color-text;
 
     &__header {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        background-color: var(--theme-header-background);
+        border-radius: 10px;
+        padding: 24px;
     }
 
     &__status {

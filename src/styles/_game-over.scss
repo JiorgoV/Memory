@@ -6,7 +6,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: $color-background;
+    background: var(--theme-game-over-background);
     color: $color-text;
 
         &__title {
@@ -15,9 +15,9 @@
         font-size: 187px;
         font-weight: 700;
         line-height: 100%;
-        color: #4dd5bc;
+        color: var(--theme-primary);
         text-shadow:
-            -7px 0 8px rgba(#4dd5bc, 0.5),
+            -7px 0 8px rgba(var(--theme-primary), 0.5),
             -4px -2px 0 #ffffff;
     }
 
