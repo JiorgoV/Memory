@@ -8,13 +8,13 @@ export function getGameTemplate(theme: ThemeName): string {
             <div class="game__status">
                 <div class="game__scores">
                     <div class="game__score game__score--blue">
-                        <img class="game__score-icon" src="/img/${theme}/player-blue.svg" alt="">
-                        <span>Blue</span>
+                        <img class="game__score-icon" src="/img/${theme}/player-blue.svg" alt="Blue">
+                        <span class="game__score-label">Blue</span>
                         <span class="game__score-value" id="score-blue">0</span>
                     </div>
                     <div class="game__score game__score--orange">
-                        <img class="game__score-icon" src="/img/${theme}/player-orange.svg" alt="">
-                        <span>Orange</span>
+                        <img class="game__score-icon" src="/img/${theme}/player-orange.svg" alt="Orange">
+                        <span class="game__score-label">Orange</span>
                         <span class="game__score-value" id="score-orange">0</span>
                     </div>
                 </div>

@@ -21,14 +21,19 @@
         gap: 170px;
     }
 
-    &__scores {
+    &__score-label {
+            display: var(--theme-score-label-display);
+        }
+
+        &__scores {
         display: flex;
-        gap: 20px;
-        padding: 17px 20px;
-        background: rgba(#86e9d6, 0.2);
-        font-family: "Red Rose", sans-serif;
-        font-size: 24px;
-        font-weight: 700;
+        gap: var(--theme-game-scores-gap);
+        padding: var(--theme-game-scores-padding);
+        background: var(--theme-game-scores-background);
+        font-family: var(--theme-game-scores-font-family);
+        font-size: var(--theme-game-scores-font-size);
+        font-weight: var(--theme-game-scores-font-weight);
+        border-radius: var(--theme-game-scores-border-radius);
     }
 
     &__score {
@@ -37,11 +42,11 @@
         gap: 6px;
 
         &--blue {
-            color: #2bb1ff;
+            color: var(--theme-game-scores-color-blue);
         }
 
         &--orange {
-            color: #f58e39;
+            color: var(--theme-game-scores-color-orange);
         }
     }
 
@@ -49,35 +54,45 @@
         display: flex;
         align-items: center;
         gap: 8px;
-        font-family: "Red Rose", sans-serif;
-        font-size: 26px;
-        font-weight: 400;
+        font-family: var(--theme-current-player-font-family);
+        font-size: var(--theme-current-player-font-size);
+        font-weight: var(--theme-current-player-font-weight);
+        color: var(--theme-current-player);
     }
 
-    &__exit-button {
+            &__exit-button {
+        --button-fill: var(--theme-exit-button-background);
+
         display: flex;
         align-items: center;
         gap: 10px;
-        padding: 16px 24px;
-        border: 1px solid #4fd9bb;
-        background: #3f5754;
-        color: $color-text;
+        padding: var(--theme-exit-button-padding);
+        border: var(--theme-exit-button-border-width) solid var(--theme-exit-button-border);
+        border-radius: var(--theme-exit-button-radius);
+        background-color: transparent;
+        background-image: var(--theme-button-frame), linear-gradient(var(--button-fill), var(--button-fill));
+        background-clip: border-box, padding-box;
+        background-origin: border-box;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        box-shadow: var(--theme-exit-button-shadow);
+        color: var(--theme-exit-button-color);
         cursor: pointer;
-        font-family: "Red Rose", sans-serif;
-        font-size: 24px;
-        font-weight: 700;
-        transition: background 0.2s ease, box-shadow 0.2s ease;
+        font-family: var(--theme-exit-button-font-family);
+        font-size: var(--theme-exit-button-font-size);
+        font-weight: var(--theme-exit-button-font-weight);
+        transition: background-color 0.2s ease, box-shadow 0.2s ease;
 
-         &:hover {
-            background: rgba(#86e9d6, 0.26);
-            border-color: #4dd5bc;
-            box-shadow:
-                inset 0 0 0 2px #4dd5bc,
-                4px 4px 6px rgba(#4dd5bc, 0.2);
+        &:hover {
+            background-color: var(--theme-exit-button-hover-background);
+            background-image: none;
+            border-color: var(--theme-exit-button-hover-border);
+            color: var(--theme-exit-button-hover-color);
+            box-shadow: var(--theme-exit-button-hover-shadow);
         }
     }
 
-        &__board {
+    &__board {
         display: grid;
         justify-content: center;
         gap: 16px;
@@ -152,6 +167,7 @@
         &__dialog {
         padding: 0;
         border: none;
+        border-radius: var(--theme-dialog-radius);
 
         &::backdrop {
             background: rgba(#000000, 0.5);
@@ -161,15 +177,15 @@
     &__dialog-content {
         padding: 32px 40px;
         text-align: center;
-        background: #ffffff;
+        background: var(--theme-dialog-background-color);
     }
 
     &__dialog-text {
         margin: 0 0 32px;
-        font-family: "Red Rose", sans-serif;
+        font-family: var(--theme-dialog-font-family);
         font-size: 24px;
         font-weight: 700;
-        color: $color-background;
+        color: var(--theme-dialog-text-color);
     }
 
     &__dialog-actions {
@@ -178,31 +194,46 @@
         gap: 16px;
     }
 
-        &__dialog-button {
-        padding: 10px 16px;
-        border: 2px solid #4dd5bc;
-        font-family: "Red Rose", sans-serif;
-        font-size: 16px;
+            &__dialog-button {
+        --button-fill: var(--theme-dialog-button-background);
+
+        padding: var(--theme-dialog-button-padding);
+        border: var(--theme-dialog-button-border-width) solid var(--theme-dialog-button-border);
+        border-radius: var(--theme-dialog-button-radius);
+        font-family: var(--theme-dialog-font-family);
+        font-size: var(--theme-dialog-button-font-size);
         font-weight: 700;
-        background: #4dd5bc;
-        color: #ffffff;
+        background-color: transparent;
+        background-image: var(--theme-pop-up-button-frame), linear-gradient(var(--button-fill), var(--button-fill));
+        background-clip: border-box, padding-box;
+        background-origin: border-box;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        color: var(--theme-dialog-button-color);
         cursor: pointer;
-        transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: var(--theme-dialog-button-shadow);
+        transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 
         &:hover {
-            background: #66cfbcb2;
-            border-color: #3abca4;
-            box-shadow: inset 0 0 0 1px #3abca4;
+            background-color: var(--theme-dialog-button-background-hover);
+            background-image: none;
+            border-color: var(--theme-dialog-button-border-hover);
+            box-shadow: var(--theme-dialog-button-hover-shadow);
+            color: var(--theme-dialog-button-hover-color);
         }
 
         &--secondary {
-            background: rgba(#86e9d6, 0.14);
-            color: #4dd5bc;
+            --button-fill: var(--theme-dialog-secondary-button-background);
+
+            color: var(--theme-dialog-secondary-button-color);
+            border-color: var(--theme-dialog-secondary-button-border);
+            box-shadow: var(--theme-dialog-secondary-button-shadow);
 
             &:hover {
-                background: rgba(#86e9d6, 0.3);
-                border-color: #4dd5bc;
-                box-shadow: inset 0 0 0 1px #4dd5bc;
+                background-color: var(--theme-dialog-secondary-button-background-hover);
+                border-color: var(--theme-dialog-secondary-button-border-hover);
+                box-shadow: var(--theme-dialog-secondary-button-hover-shadow);
+                color: var(--theme-dialog-secondary-button-hover-color);
             }
         }
     }
