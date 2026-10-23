@@ -1,7 +1,15 @@
 import type { Card, ThemeName } from "../types";
 
+const DIALOG_TEXTS: Record<ThemeName, { back: string; quit: string }> = {
+    "code-vibes": { back: "Back to game", quit: "Exit game" },
+    gaming: { back: "No, back to game", quit: "Exit game" },
+    "da-projects": { back: "Back to game", quit: "Exit game" },
+    foods: { back: "No, back to game", quit: "Exit game" },
+};
+
 /** Returns the HTML for the game screen. */
 export function getGameTemplate(theme: ThemeName): string {
+    const dialogTexts = DIALOG_TEXTS[theme];
     return `
             <section class="game">
             <header class="game__header">
@@ -38,8 +46,8 @@ export function getGameTemplate(theme: ThemeName): string {
                     <div class="game__dialog-content">
                         <p class="game__dialog-text">Are you sure you want to quit the game?</p>
                         <div class="game__dialog-actions">
-                            <button class="game__dialog-button" id="back-to-game" type="button">Back to game</button>
-                            <button class="game__dialog-button game__dialog-button--secondary" id="quit-game" type="button">Exit game</button>
+                            <button class="game__dialog-button" id="back-to-game" type="button">${dialogTexts.back}</button>
+                            <button class="game__dialog-button game__dialog-button--secondary" id="quit-game" type="button">${dialogTexts.quit}</button>
                         </div>
                     </div>
                 </dialog>
