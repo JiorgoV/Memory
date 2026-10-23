@@ -22,10 +22,10 @@
     }
 
     &__score-label {
-            display: var(--theme-score-label-display);
-        }
+        display: var(--theme-score-label-display);
+    }
 
-        &__scores {
+    &__scores {
         display: flex;
         gap: var(--theme-game-scores-gap);
         padding: var(--theme-game-scores-padding);
@@ -60,7 +60,7 @@
         color: var(--theme-current-player);
     }
 
-            &__exit-button {
+    &__exit-button {
         --button-fill: var(--theme-exit-button-background);
 
         display: flex;
@@ -90,6 +90,22 @@
             color: var(--theme-exit-button-hover-color);
             box-shadow: var(--theme-exit-button-hover-shadow);
         }
+    }
+
+    &__exit-icon {
+        width: var(--theme-exit-icon-size);
+
+        &--hover {
+            display: none;
+        }
+    }
+
+    &__exit-button:hover &__exit-icon {
+        display: none;
+    }
+
+    &__exit-button:hover &__exit-icon--hover {
+        display: block;
     }
 
     &__board {
@@ -164,7 +180,7 @@
         outline-offset: -4px;
     }
 
-        &__dialog {
+    &__dialog {
         padding: 0;
         border: none;
         border-radius: var(--theme-dialog-radius);
@@ -194,7 +210,7 @@
         gap: 16px;
     }
 
-            &__dialog-button {
+    &__dialog-button {
         --button-fill: var(--theme-dialog-button-background);
 
         padding: var(--theme-dialog-button-padding);
@@ -203,7 +219,7 @@
         font-family: var(--theme-dialog-font-family);
         font-size: var(--theme-dialog-button-font-size);
         font-weight: 700;
-        background-color: transparent;
+        background-color: var(--theme-dialog-button-background);
         background-image: var(--theme-pop-up-button-frame), linear-gradient(var(--button-fill), var(--button-fill));
         background-clip: border-box, padding-box;
         background-origin: border-box;
@@ -225,6 +241,7 @@
         &--secondary {
             --button-fill: var(--theme-dialog-secondary-button-background);
 
+            background-color: var(--theme-dialog-secondary-button-background);
             color: var(--theme-dialog-secondary-button-color);
             border-color: var(--theme-dialog-secondary-button-border);
             box-shadow: var(--theme-dialog-secondary-button-shadow);

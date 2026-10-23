@@ -26,7 +26,9 @@ export function getGameTemplate(theme: ThemeName): string {
             </div>
 
                 <button class="game__exit-button" id="exit-button" type="button">
-                    <img src="/icons/exit.svg" alt="">Exit game
+                    <img class="game__exit-icon" src="/img/${theme}/exit.svg" alt="">
+                    <img class="game__exit-icon game__exit-icon--hover" src="/img/${theme}/exit-hover.svg" alt="">
+                    Exit game
                 </button>
             </header>
 
