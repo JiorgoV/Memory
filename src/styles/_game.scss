@@ -3,6 +3,7 @@
 .game {
     min-height: 100vh;
     padding: 24px 80px;
+    padding-inline: max(80px, calc((100% - #{$breakpoint-widescreen}) / 2 + 80px));
     background: var(--theme-game-background);
     color: $color-text;
 

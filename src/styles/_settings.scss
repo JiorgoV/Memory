@@ -3,12 +3,22 @@
 .settings {
     min-height: 100vh;
     padding: 45px;
+    padding-inline: max(45px, calc((100% - #{$breakpoint-widescreen}) / 2 + 45px));
     background: #ffffff;
     color: $color-background;
 
+    @media (max-width: $breakpoint-mobile) {
+        padding: 24px 16px;
+    }
+
     &__layout {
         display: flex;
-        gap: 450px;
+        gap: clamp(40px, 20vw, 450px);
+
+        @media (max-width: $breakpoint-laptop) {
+            flex-direction: column;
+            align-items: center;
+        }
     }
 
     &__title {
@@ -48,7 +58,8 @@
     &__form {
         display: flex;
         flex-direction: column;
-        width: 400px;
+        width: 100%;
+        max-width: 400px;
         gap: 40px;
         font-family: "Almarai", sans-serif;
     }
@@ -140,7 +151,7 @@
         }
     }
 
-        &__preview {
+    &__preview {
         display: flex;
         flex-direction: column;
         gap: 24px;
@@ -148,10 +159,11 @@
 
     &__preview-image {
         align-self: flex-end;
-        width: 460px;
+        width: 100%;
+        max-width: 460px;
     }
 
-        &__summary {
+    &__summary {
         display: grid;
         grid-template-columns: 175px 75px 90px auto;
         align-items: center;
@@ -161,6 +173,13 @@
         font-size: 20px;
         font-weight: 400;
         background-color: $summary-background;
+
+        @media (max-width: $breakpoint-tablet-vertical) {
+            grid-template-columns: repeat(3, auto);
+            justify-content: center;
+            gap: 24px;
+            font-size: 16px;
+        }
     }
 
     &__summary-item {
@@ -176,10 +195,15 @@
             height: 44px;
             background: $button-background;
             transform: translateY(-50%) rotate(20deg);
+
+            @media (max-width: $breakpoint-tablet-vertical) {
+                right: -14px;
+                height: 32px;
+            }
         }
     }
 
-        &__start-button {
+    &__start-button {
         display: flex;
         align-items: center;
         gap: 8px;
@@ -210,6 +234,11 @@
 
         &:not(:disabled):hover &-icon {
             transform: rotate(-15deg);
+        }
+
+        @media (max-width: $breakpoint-tablet-vertical) {
+            grid-column: 1 / -1;
+            justify-self: center;
         }
     }
 }
