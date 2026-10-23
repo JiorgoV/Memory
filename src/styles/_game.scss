@@ -111,37 +111,30 @@
     &__board {
         display: grid;
         justify-content: center;
-        gap: 16px;
-        margin-top: 40px;
 
         &--small {
-            grid-template-columns: repeat(4, 120px);
+            grid-template-columns: repeat(4, var(--theme-card-width));
+            gap: 16px;
+            margin-top: 54px;
         }
 
-        &--medium,
+        &--medium {
+            grid-template-columns: repeat(6, var(--theme-card-width));
+            gap: 6px;
+            margin-top: 54px;
+        }
+
         &--large {
-            grid-template-columns: repeat(6, 120px);
-        }
-
-        &--code-vibes {
-            --match-color: #4dd5bc;
-        }
-
-        &--gaming {
-            --match-color: #ed1b764d;
-        }
-
-        &--da-projects {
-            --match-color: #1e7594;
-        }
-
-        &--foods {
-            --match-color: #f3832d;
+            grid-template-columns: repeat(6, var(--theme-card-width));
+            gap: 6px;
+            margin-top: 20px;
+            zoom: 0.8;
         }
     }
 
     &__card {
-        aspect-ratio: 1;
+        width: var(--theme-card-width);
+        height: var(--theme-card-height);
         padding: 0;
         border: none;
         background: none;
@@ -165,14 +158,14 @@
     &__card-back,
     &__card-front {
         position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         backface-visibility: hidden;
     }
 
     &__card-front {
-        transform: rotateY(180deg);
+        transform: translate(-50%, -50%) rotateY(180deg);
     }
 
     &__card--matched &__card-front {
