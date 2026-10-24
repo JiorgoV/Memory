@@ -234,6 +234,7 @@
         padding: 0;
         border: none;
         border-radius: var(--theme-dialog-radius);
+        max-width: calc(100% - 32px);
 
         &::backdrop {
             background: rgba(#000000, 0.5);
@@ -252,12 +253,14 @@
         font-size: 24px;
         font-weight: 700;
         color: var(--theme-dialog-text-color);
+        font-size: clamp(18px, 4vw, 24px);
     }
 
     &__dialog-actions {
         display: flex;
         justify-content: center;
         gap: 16px;
+        flex-wrap: wrap;
     }
 
     &__dialog-button {

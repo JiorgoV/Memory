@@ -12,7 +12,7 @@
         &__title {
         margin: 0 0 60px;
         font-family: "Red Rose", sans-serif;
-        font-size: 187px;
+        font-size: clamp(56px, 13vw, 187px);
         font-weight: 700;
         line-height: 100%;
         color: var(--theme-primary);
@@ -24,7 +24,7 @@
     &__subtitle {
         margin: 0 0 16px;
         font-family: "Red Rose", sans-serif;
-        font-size: 20px;
+        font-size: clamp(16px, 2vw, 20px);
         font-weight: 400;
     }
 }

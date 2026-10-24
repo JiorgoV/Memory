@@ -21,16 +21,16 @@
     }
 
     @keyframes confetti-drop {
-    from {
-        opacity: 0;
-        transform: translate(-50%, -40px);
-    }
+        from {
+            opacity: 0;
+            transform: translate(-50%, -40px);
+        }
 
-    to {
-        opacity: 1;
-        transform: translate(-50%, 0);
+        to {
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
     }
-}
 
     &--blue {
         --result-color: #2bb1ff;
@@ -43,14 +43,14 @@
     &__subtitle {
         margin: 0 0 16px;
         font-family: "Red Rose", sans-serif;
-        font-size: 40px;
+        font-size: clamp(20px, 4vw, 40px);
         font-weight: 400;
     }
 
     &__title {
         margin: 0 0 40px;
         font-family: "Red Rose", sans-serif;
-        font-size: 48px;
+        font-size: clamp(28px, 5vw, 48px);
         font-weight: 700;
         line-height: 100%;
         text-transform: uppercase;
@@ -58,14 +58,14 @@
     }
 
     &--draw &__title {
-        font-size: 96px;
+        font-size: clamp(48px, 10vw, 96px);
         text-shadow:
             -7px 0 8px rgba(#4dd5bc, 0.5),
             -4px -2px 0 #ffffff;
     }
 
     &__icon {
-        
+        max-width: 40vw;
         margin-bottom: 40px;
     }
 
