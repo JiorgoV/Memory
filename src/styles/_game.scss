@@ -7,19 +7,44 @@
     background: var(--theme-game-background);
     color: $color-text;
 
+    @media (max-width: $breakpoint-tablet-vertical) {
+        padding-inline: 16px;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+        --theme-current-player-font-size: 18px;
+        --theme-game-scores-font-size: 16px;
+        --theme-exit-button-font-size: 14px;
+        --theme-exit-button-padding: 8px 12px;
+    }
+
     &__header {
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
-        background-color: var(--theme-header-background);
-        border-radius: 10px;
+        gap: 16px;
         padding: 24px;
+        border-radius: 10px;
+        background-color: var(--theme-header-background);
+
+        @media (max-width: $breakpoint-mobile) {
+            padding: 12px;
+        }
     }
 
     &__status {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
-        gap: 170px;
+        gap: clamp(16px, 10vw, 170px);
+        min-width: 0;
+
+        @media (max-width: $breakpoint-tablet-vertical) {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+        }
     }
 
     &__score-label {
@@ -110,32 +135,63 @@
     }
 
     &__board {
+        --card-scale: 1;
+
         display: grid;
         justify-content: center;
+        grid-template-columns: repeat(var(--board-columns), calc(var(--theme-card-width) * var(--card-scale)));
 
         &--small {
-            grid-template-columns: repeat(4, var(--theme-card-width));
+            --board-columns: 4;
+
             gap: 16px;
             margin-top: 54px;
+
+            @media (max-width: $breakpoint-tablet-vertical) {
+                --card-scale: 0.8;
+            }
+
+            @media (max-width: $breakpoint-mobile) {
+                --card-scale: 0.55;
+            }
         }
 
         &--medium {
-            grid-template-columns: repeat(6, var(--theme-card-width));
+            --board-columns: 6;
+
             gap: 6px;
             margin-top: 54px;
+
+            @media (max-width: $breakpoint-tablet-vertical) {
+                --card-scale: 0.8;
+            }
+
+            @media (max-width: $breakpoint-mobile) {
+                --board-columns: 4;
+                --card-scale: 0.65;
+            }
         }
 
         &--large {
-            grid-template-columns: repeat(6, var(--theme-card-width));
+            --board-columns: 6;
+            --card-scale: 0.8;
+
             gap: 6px;
             margin-top: 20px;
-            zoom: 0.8;
+
+            @media (max-width: $breakpoint-tablet-vertical) {
+                --card-scale: 0.65;
+            }
+
+            @media (max-width: $breakpoint-mobile) {
+                --card-scale: 0.4;
+            }
         }
     }
 
     &__card {
-        width: var(--theme-card-width);
-        height: var(--theme-card-height);
+        width: calc(var(--theme-card-width) * var(--card-scale));
+        height: calc(var(--theme-card-height) * var(--card-scale));
         padding: 0;
         border: none;
         background: none;
@@ -161,12 +217,12 @@
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%) scale(var(--card-scale));
         backface-visibility: hidden;
     }
 
     &__card-front {
-        transform: translate(-50%, -50%) rotateY(180deg);
+        transform: translate(-50%, -50%) scale(var(--card-scale)) rotateY(180deg);
     }
 
     &__card--matched &__card-front {
@@ -247,5 +303,19 @@
                 color: var(--theme-dialog-secondary-button-hover-color);
             }
         }
+    }
+
+    @media (max-width: $breakpoint-tablet-vertical) {
+        padding-inline: 16px;
+    }
+
+    &__header {
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    &__status {
+        gap: clamp(16px, 10vw, 170px);
+        flex-wrap: wrap;
     }
 }
