@@ -16,7 +16,7 @@ export function getResultTemplate(result: GameResult, theme: ThemeName): string 
         ${result !== "draw" ? getConfettiTemplate(theme) : ""}
         <p class="result__subtitle">${texts.subtitle}</p>
         <h1 class="result__title">${texts.title}</h1>
-        <img class="result__icon" src="/img/${theme}/result-${result}.svg" alt="">
+        <img class="result__icon" src="img/${theme}/result-${result}.svg" alt="">
         <button class="result__button" id="back-button" type="button">Back to start</button>
     </section>
     `;
@@ -27,7 +27,7 @@ function getConfettiTemplate(theme: ThemeName): string {
     return `
     <picture class="result__confetti">
         <source media="${WIDESCREEN_MEDIA}" srcset="/img/${theme}/confetti-long.svg">
-        <img src="/img/${theme}/confetti.svg" alt="">
+        <img src="img/${theme}/confetti.svg" alt="">
     </picture>
     `;
 }

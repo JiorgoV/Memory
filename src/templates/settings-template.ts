@@ -7,7 +7,7 @@ export function getSettingsTemplate(): string {
             <form class="settings__form">
                 <fieldset class="settings__form-group">
                     <legend class="settings__form-title">
-                        <img src="/icons/palette.svg" alt="">Game themes
+                        <img src="icons/palette.svg" alt="">Game themes
                     </legend>
                     <label class="settings__option">
                         <input type="radio" name="theme" value="code-vibes" checked>
@@ -29,7 +29,7 @@ export function getSettingsTemplate(): string {
 
                 <fieldset class="settings__form-group">
                     <legend class="settings__form-title">
-                        <img src="/icons/chess-pawn.svg" alt="">Choose player
+                        <img src="icons/chess-pawn.svg" alt="">Choose player
                     </legend>
                     <label class="settings__option">
                         <input type="radio" name="player" value="blue">
@@ -43,7 +43,7 @@ export function getSettingsTemplate(): string {
 
                 <fieldset class="settings__form-group">
                     <legend class="settings__form-title">
-                        <img src="/icons/board-icon.svg" alt="">Board size
+                        <img src="icons/board-icon.svg" alt="">Board size
                     </legend>
                     <label class="settings__option">
                         <input type="radio" name="size" value="small">
@@ -60,13 +60,13 @@ export function getSettingsTemplate(): string {
                 </fieldset>
             </form>
             <div class="settings__preview">
-                <img class="settings__preview-image" id="theme-preview" src="/img/preview-code-vibes.svg" alt="Preview of the code vibes theme">
+                <img class="settings__preview-image" id="theme-preview" src="img/preview-code-vibes.svg" alt="Preview of the code vibes theme">
                 <div class="settings__summary">
                     <span class="settings__summary-item" id="summary-theme">Game theme</span>
                     <span class="settings__summary-item" id="summary-player">Player</span>
                     <span class="settings__summary-item" id="summary-size">Board size</span>
                     <button class="settings__start-button" id="start-button" type="button" disabled>
-                        <img class="settings__start-button-icon" src="/icons/smart-display.svg" alt="">
+                        <img class="settings__start-button-icon" src="icons/smart-display.svg" alt="">
                         <span class="settings__start-button-text">Start</span>
                     </button>
                 </div>
