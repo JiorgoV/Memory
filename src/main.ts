@@ -76,7 +76,7 @@ function updateSummary(input: HTMLInputElement): void {
 /** Shows the preview image of the selected theme. */
 function updatePreview(): void {
     const image = document.getElementById("theme-preview") as HTMLImageElement;
-    image.src = `/img/preview-${SETTINGS.theme}.svg`;
+    image.src = `img/preview-${SETTINGS.theme}.svg`;
     image.alt = `Preview of the ${SETTINGS.theme} theme`;
 }
 
@@ -211,7 +211,7 @@ function switchPlayer(): void {
 /** Shows the current player's icon in the header. */
 function updateCurrentPlayer(): void {
     const icon = document.getElementById("current-player") as HTMLImageElement;
-    icon.src = `/img/${SETTINGS.theme}/current-${currentPlayer}.svg`;
+    icon.src = `img/${SETTINGS.theme}/current-${currentPlayer}.svg`;
     icon.alt = currentPlayer;
 }
 
