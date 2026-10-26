@@ -16,6 +16,7 @@
 
     @media (max-width: $breakpoint-tablet-vertical) {
         padding-inline: 16px;
+        --theme-game-scores-gap: 12px;
     }
 
     &__header {
@@ -29,6 +30,7 @@
 
         @media (max-width: $breakpoint-mobile) {
             padding: 12px;
+            gap: 8px;
         }
     }
 
