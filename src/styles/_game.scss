@@ -11,7 +11,8 @@
         padding-inline: 16px;
     }
 
-    @media (max-width: $breakpoint-mobile) {
+    @media (max-width: $breakpoint-tablet-vertical) {
+        padding-inline: 16px;
         --theme-current-player-font-size: 18px;
         --theme-game-scores-font-size: 16px;
         --theme-exit-button-font-size: 14px;
@@ -20,7 +21,6 @@
 
     &__header {
         display: flex;
-        flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
         gap: 16px;
@@ -35,9 +35,8 @@
 
     &__status {
         display: flex;
-        flex-wrap: wrap;
         align-items: center;
-        gap: clamp(16px, 10vw, 170px);
+        gap: clamp(24px, 15vw - 100px, 170px);
         min-width: 0;
 
         @media (max-width: $breakpoint-tablet-vertical) {
@@ -120,6 +119,7 @@
 
     &__exit-icon {
         width: var(--theme-exit-icon-size);
+        height: var(--theme-exit-icon-size);
 
         &--hover {
             display: none;
@@ -312,13 +312,4 @@
         padding-inline: 16px;
     }
 
-    &__header {
-        flex-wrap: wrap;
-        gap: 16px;
-    }
-
-    &__status {
-        gap: clamp(16px, 10vw, 170px);
-        flex-wrap: wrap;
-    }
 }
