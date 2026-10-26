@@ -7,16 +7,15 @@
     background: var(--theme-game-background);
     color: $color-text;
 
-    @media (max-width: $breakpoint-tablet-vertical) {
-        padding-inline: 16px;
-    }
-
-    @media (max-width: $breakpoint-tablet-vertical) {
-        padding-inline: 16px;
+    @media (max-width: $breakpoint-tablet) {
         --theme-current-player-font-size: 18px;
         --theme-game-scores-font-size: 16px;
         --theme-exit-button-font-size: 14px;
         --theme-exit-button-padding: 8px 12px;
+    }
+
+    @media (max-width: $breakpoint-tablet-vertical) {
+        padding-inline: 16px;
     }
 
     &__header {
@@ -37,9 +36,8 @@
         display: flex;
         align-items: center;
         gap: clamp(24px, 15vw - 100px, 170px);
-        min-width: 0;
 
-        @media (max-width: $breakpoint-tablet-vertical) {
+        @media (max-width: $breakpoint-tablet) {
             flex-direction: column;
             align-items: flex-start;
             gap: 8px;
@@ -79,6 +77,7 @@
         display: flex;
         align-items: center;
         gap: 8px;
+        white-space: nowrap;
         font-family: var(--theme-current-player-font-family);
         font-size: var(--theme-current-player-font-size);
         font-weight: var(--theme-current-player-font-weight);
@@ -91,6 +90,7 @@
         display: flex;
         align-items: center;
         gap: 10px;
+        white-space: nowrap;
         padding: var(--theme-exit-button-padding);
         border: var(--theme-exit-button-border-width) solid var(--theme-exit-button-border);
         border-radius: var(--theme-exit-button-radius);
@@ -134,6 +134,12 @@
         display: block;
     }
 
+    &__exit-text {
+        @media (max-width: $breakpoint-mobile) {
+            display: none;
+        }
+    }
+
     &__board {
         --card-scale: 1;
 
@@ -152,7 +158,8 @@
             }
 
             @media (max-width: $breakpoint-mobile) {
-                --card-scale: 0.55;
+                --card-scale: 0.5;
+                gap: 8px;
             }
         }
 
@@ -168,7 +175,7 @@
 
             @media (max-width: $breakpoint-mobile) {
                 --board-columns: 4;
-                --card-scale: 0.65;
+                --card-scale: 0.55;
             }
         }
 
@@ -184,7 +191,7 @@
             }
 
             @media (max-width: $breakpoint-mobile) {
-                --card-scale: 0.4;
+                --card-scale: 0.35;
             }
         }
     }

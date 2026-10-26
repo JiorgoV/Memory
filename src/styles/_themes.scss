@@ -1,3 +1,5 @@
+@use "variables" as *;
+
 [data-theme="code-vibes"] {
     --theme-game-background: #303131;
     --theme-game-over-background: #303131;
@@ -261,4 +263,9 @@
     --theme-dialog-secondary-button-hover-color: rgba(255, 255, 255, 1);
     --theme-card-width: 122px;
     --theme-card-height: 120px;
+    @media (max-width: $breakpoint-mobile) {
+        --theme-button-frame: none;
+        --theme-exit-button-border: rgba(243, 131, 45, 1);
+    }
+
 }
