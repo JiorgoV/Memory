@@ -11,20 +11,20 @@
 
         &__title {
         margin: 0 0 60px;
-        font-family: "Red Rose", sans-serif;
-        font-size: clamp(56px, 13vw, 187px);
-        font-weight: 700;
+        font-family: var(--theme-game-over-title-font-family);    
+        font-size: clamp(56px, 13vw, var(--theme-game-over-title-font-size));
+        font-weight: var(--theme-game-over-title-font-weight);
         line-height: 100%;
-        color: var(--theme-primary);
-        text-shadow:
-            -7px 0 8px rgba(var(--theme-primary), 0.5),
-            -4px -2px 0 #ffffff;
+        letter-spacing: var(--theme-game-over-title-letter-spacing);
+        color: var(--theme-game-over-title-color);
+        text-shadow: var(--theme-game-over-title-text-shadow);
     }
 
     &__subtitle {
         margin: 0 0 16px;
-        font-family: "Red Rose", sans-serif;
-        font-size: clamp(16px, 2vw, 20px);
-        font-weight: 400;
+        font-family: var(--theme-game-over-subtitle-font-family);
+        font-size: clamp(16px, 2vw, var(--theme-game-over-subtitle-font-size));
+        font-weight: var(--theme-game-over-subtitle-font-weight);
+        letter-spacing: var(--theme-game-over-subtitle-letter-spacing);
     }
 }

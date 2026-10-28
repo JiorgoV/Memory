@@ -1,7 +1,6 @@
 @use "variables" as *;
 
 .result {
-    --result-color: #4dd5bc;
     position: relative;
     overflow: hidden;
     min-height: 100vh;
@@ -12,6 +11,18 @@
     background: var(--theme-result-background);
     color: $color-text;
 
+    &--blue {
+        --result-color: var(--theme-result-title-color-blue);
+    }
+
+    &--orange {
+        --result-color: var(--theme-result-title-color-orange);
+    }
+
+    &--draw {
+        --result-color: var(--theme-result-title-color-draw);
+    }
+
     &__confetti {
         position: absolute;
         top: 0;
@@ -20,48 +31,29 @@
         animation: confetti-drop 0.8s ease-out;
     }
 
-    @keyframes confetti-drop {
-        from {
-            opacity: 0;
-            transform: translate(-50%, -40px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translate(-50%, 0);
-        }
-    }
-
-    &--blue {
-        --result-color: #2bb1ff;
-    }
-
-    &--orange {
-        --result-color: #f58e39;
-    }
-
     &__subtitle {
         margin: 0 0 16px;
-        font-family: "Red Rose", sans-serif;
-        font-size: clamp(20px, 4vw, 40px);
-        font-weight: 400;
+        font-family: var(--theme-font-family);
+        font-size: clamp(20px, 4vw, var(--theme-result-subtitle-font-size));
+        font-weight: var(--theme-result-subtitle-font-weight);
+        color: var(--theme-result-subtitle-color);
     }
 
     &__title {
         margin: 0 0 40px;
-        font-family: "Red Rose", sans-serif;
-        font-size: clamp(28px, 5vw, 48px);
-        font-weight: 700;
+        font-family: var(--theme-font-family);
+        font-size: clamp(28px, 5vw, var(--theme-result-title-font-size));
+        font-weight: var(--theme-result-title-font-weight);
         line-height: 100%;
+        letter-spacing: var(--theme-result-title-letter-spacing);
         text-transform: uppercase;
         color: var(--result-color);
+        text-shadow: var(--theme-result-title-shadow);
     }
 
     &--draw &__title {
-        font-size: clamp(48px, 10vw, 96px);
-        text-shadow:
-            -7px 0 8px rgba(#4dd5bc, 0.5),
-            -4px -2px 0 #ffffff;
+        font-size: clamp(48px, 10vw, var(--theme-result-draw-font-size));
+        text-shadow: var(--theme-result-draw-shadow);
     }
 
     &__icon {
@@ -70,18 +62,32 @@
     }
 
     &__button {
-        padding: 10px 16px;
-        border: 1px solid #4fd9bb;
-        background: #3f5754;
-        color: $color-text;
-        font-family: "Red Rose", sans-serif;
-        font-size: 16px;
-        font-weight: 700;
+        padding: var(--theme-result-button-padding);
+        border: var(--theme-result-button-border);
+        border-radius: var(--theme-result-button-border-radius);
+        background: var(--theme-result-button-background);
+        box-shadow: var(--theme-result-button-shadow);
+        color: var(--theme-result-button-color);
+        font-family: var(--theme-result-button-font-family);
+        font-size: var(--theme-result-button-font-size);
+        font-weight: var(--theme-result-button-font-weight);
         cursor: pointer;
         transition: transform 0.2s ease;
 
         &:hover {
             transform: scale(1.05);
         }
+    }
+}
+
+@keyframes confetti-drop {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
     }
 }

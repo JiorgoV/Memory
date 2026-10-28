@@ -1,6 +1,7 @@
 @use "variables" as *;
 
 [data-theme="code-vibes"] {
+    --theme-font-family: "Red Rose", sans-serif;
     --theme-game-background: #303131;
     --theme-game-over-background: #303131;
     --theme-result-background: #303131;
@@ -23,6 +24,7 @@
     --theme-game-scores-color-orange: #f58e39;
     --theme-score-label-display: inline;
     --theme-button-frame: none;
+    --theme-pop-up-button-frame: none;
     --theme-exit-button-background: rgba(134, 233, 214, 0.2);
     --theme-exit-button-border: rgba(77, 213, 188, 1);
     --theme-exit-button-border-width: 1px;
@@ -64,9 +66,41 @@
     --theme-dialog-secondary-button-hover-color: rgba(77, 213, 188, 1);
     --theme-card-width: 120px;
     --theme-card-height: 120px;
+    --theme-result-button-padding: 10px 16px;
+    --theme-result-button-border: 1px solid rgba(77, 213, 188, 1);
+    --theme-result-button-border-radius: 0;
+    --theme-result-button-background: rgba(134, 233, 214, 0.2);
+    --theme-result-button-color: rgba(255, 255, 255, 1);
+    --theme-result-button-font-family: "Red Rose", sans-serif;
+    --theme-result-button-font-size: 24px;
+    --theme-result-button-font-weight: 700;
+    --theme-result-button-shadow: 0 0 transparent;
+    --theme-result-subtitle-font-size: 40px;
+    --theme-result-subtitle-font-weight: 400;
+    --theme-result-subtitle-color: rgba(255, 255, 255, 1);
+    --theme-result-title-font-size: 60px;
+    --theme-result-title-font-weight: 700;
+    --theme-result-title-shadow: none;
+    --theme-result-title-letter-spacing: normal;
+    --theme-result-title-color-blue: rgba(43, 177, 255, 1);
+    --theme-result-title-color-orange: rgba(245, 142, 57, 1);
+    --theme-result-title-color-draw: rgba(77, 213, 188, 1);
+    --theme-result-draw-font-size: 96px;
+    --theme-result-draw-shadow: -7px 0 8px rgba(77, 213, 188, 0.5), -4px -2px 0 #ffffff;
+    --theme-game-over-title-font-family: "Red Rose", sans-serif;
+    --theme-game-over-title-font-size: 124px;
+    --theme-game-over-title-font-weight: 700;
+    --theme-game-over-title-letter-spacing: normal;
+    --theme-game-over-title-color: rgba(77, 213, 188, 1);
+    --theme-game-over-title-text-shadow: -7px 0 8px rgba(77, 213, 188, 0.5), -4px -2px 0 #ffffff;
+    --theme-game-over-subtitle-font-family: "Red Rose", sans-serif;
+    --theme-game-over-subtitle-font-size: 26px;
+    --theme-game-over-subtitle-font-weight: 400;
+    --theme-game-over-subtitle-letter-spacing: normal;
 }
 
 [data-theme="gaming"] {
+    --theme-font-family: "Orbitron", sans-serif;
     --theme-game-background: rgba(41, 79, 96, 1);
     --theme-game-over-background: rgba(41, 79, 96, 1);
     --theme-result-background: rgba(41, 79, 96, 1);
@@ -89,6 +123,7 @@
     --theme-game-scores-color-orange: #f58e39;
     --theme-score-label-display: none;
     --theme-button-frame: none;
+    --theme-pop-up-button-frame: none;
     --theme-exit-button-background: rgba(237, 27, 118, 0.08);
     --theme-exit-button-border: rgba(231, 28, 79, 1);
     --theme-exit-button-border-width: 1px;
@@ -130,9 +165,41 @@
     --theme-dialog-secondary-button-hover-color: rgba(237, 27, 118, 1);
     --theme-card-width: 105px;
     --theme-card-height: 120px;
+    --theme-result-button-padding: 12px 20px;
+    --theme-result-button-border: 2px solid rgba(231, 28, 79, 1);
+    --theme-result-button-border-radius: 10px;
+    --theme-result-button-background: rgba(237, 27, 118, 0.08);
+    --theme-result-button-color: rgba(255, 255, 255, 1);
+    --theme-result-button-font-family: "Orbitron", sans-serif;
+    --theme-result-button-font-size: 20px;
+    --theme-result-button-font-weight: 700;
+    --theme-result-button-shadow: 0 0 transparent;
+    --theme-result-subtitle-font-size: 28px;
+    --theme-result-subtitle-font-weight: 700;
+    --theme-result-subtitle-color: rgba(255, 255, 255, 1);
+    --theme-result-title-font-size: 64px;
+    --theme-result-title-font-weight: 700;
+    --theme-result-title-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    --theme-result-title-letter-spacing: 0.07em;
+    --theme-result-title-color-blue: rgba(34, 152, 219, 1);
+    --theme-result-title-color-orange: rgba(234, 105, 0, 1);
+    --theme-result-title-color-draw: rgba(237, 27, 118, 1);
+    --theme-result-draw-font-size: 128px;
+    --theme-result-draw-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    --theme-game-over-title-font-family: "Orbitron", sans-serif;
+    --theme-game-over-title-font-size: 124px;
+    --theme-game-over-title-font-weight: 900;
+    --theme-game-over-title-letter-spacing: 0.07em;
+    --theme-game-over-title-color: rgba(237, 27, 118, 1);
+    --theme-game-over-title-text-shadow: none;
+    --theme-game-over-subtitle-font-family: "Orbitron", sans-serif;
+    --theme-game-over-subtitle-font-size: 28px;
+    --theme-game-over-subtitle-font-weight: 700;
+    --theme-game-over-subtitle-letter-spacing: 0.07em;
 }
 
 [data-theme="da-projects"] {
+    --theme-font-family: "Figtree", sans-serif;
     --theme-game-background: rgba(255, 255, 255, 1);
     --theme-game-over-background: rgba(30, 117, 148, 1);
     --theme-result-background: rgba(30, 117, 148, 1);
@@ -155,6 +222,7 @@
     --theme-game-scores-color-orange: #f58e39;
     --theme-score-label-display: none;
     --theme-button-frame: none;
+    --theme-pop-up-button-frame: none;
     --theme-exit-button-background: rgba(191, 229, 242, 1);
     --theme-exit-button-border: rgba(191, 229, 242, 1);
     --theme-exit-button-border-width: 1px;
@@ -196,9 +264,41 @@
     --theme-dialog-secondary-button-hover-color: rgba(255, 255, 255, 1);
     --theme-card-width: 120px;
     --theme-card-height: 100px;
+    --theme-result-button-padding: 12px 20px;
+    --theme-result-button-border: none;
+    --theme-result-button-border-radius: 0;
+    --theme-result-button-background: rgba(191, 229, 242, 1);
+    --theme-result-button-color: rgba(30, 117, 148, 1);
+    --theme-result-button-font-family: "Figtree", sans-serif;
+    --theme-result-button-font-size: 20px;
+    --theme-result-button-font-weight: 700;
+    --theme-result-button-shadow: 0 0 transparent;
+    --theme-result-subtitle-font-size: 40px;
+    --theme-result-subtitle-font-weight: 400;
+    --theme-result-subtitle-color: rgba(255, 255, 255, 1);
+    --theme-result-title-font-size: 80px;
+    --theme-result-title-font-weight: 700;
+    --theme-result-title-shadow: none;
+    --theme-result-title-letter-spacing: normal;
+    --theme-result-title-color-blue: rgba(255, 255, 255, 1);
+    --theme-result-title-color-orange: rgba(255, 255, 255, 1);
+    --theme-result-title-color-draw: rgba(253, 91, 79, 1);
+    --theme-result-draw-font-size: 128px;
+    --theme-result-draw-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    --theme-game-over-title-font-family: "Figtree", sans-serif;
+    --theme-game-over-title-font-size: 130px;
+    --theme-game-over-title-font-weight: 800;
+    --theme-game-over-title-letter-spacing: normal;
+    --theme-game-over-title-color: rgba(253, 91, 79, 1);
+    --theme-game-over-title-text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    --theme-game-over-subtitle-font-family: "Figtree", sans-serif;
+    --theme-game-over-subtitle-font-size: 40px;
+    --theme-game-over-subtitle-font-weight: 500;
+    --theme-game-over-subtitle-letter-spacing: normal;
 }
 
 [data-theme="foods"] {
+    --theme-font-family: "Klee One", sans-serif;
     --theme-game-background: rgba(255, 255, 255, 1);
     --theme-game-over-background: rgba(243, 131, 45, 1);
     --theme-result-background: rgba(255, 255, 255, 1);
@@ -222,14 +322,14 @@
     --theme-score-label-display: none;
     --theme-button-frame: url("/img/foods/button-frame.svg");
     --theme-pop-up-button-frame: url("/img/foods/pop-up-button-frame.svg");
-    --theme-exit-button-background: rgba(255, 255, 255, 1);
+    --theme-exit-button-background: rgba(255, 249, 242, 1);
     --theme-exit-button-border: transparent;
     --theme-exit-button-border-width: 3px;
     --theme-exit-button-color: rgba(243, 131, 45, 1);
     --theme-exit-button-radius: 10px;
     --theme-exit-button-padding: 12px 20px;
     --theme-exit-button-shadow: 0 0 transparent;
-    --theme-exit-button-background: rgba(255, 249, 242, 1);
+    --theme-exit-button-hover-background: rgba(243, 131, 45, 1);
     --theme-exit-button-hover-border: rgba(243, 131, 45, 1);
     --theme-exit-button-hover-color: rgba(255, 255, 255, 1);
     --theme-exit-button-hover-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
@@ -263,9 +363,40 @@
     --theme-dialog-secondary-button-hover-color: rgba(255, 255, 255, 1);
     --theme-card-width: 122px;
     --theme-card-height: 120px;
+    --theme-result-button-padding: 12px 20px;
+    --theme-result-button-border: none;
+    --theme-result-button-border-radius: 10px;
+    --theme-result-button-background: rgba(243, 131, 45, 1);
+    --theme-result-button-color: rgba(255, 255, 255, 1);
+    --theme-result-button-font-family: "Klee One", sans-serif;
+    --theme-result-button-font-size: 16px;
+    --theme-result-button-font-weight: 700;
+    --theme-result-button-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+    --theme-result-subtitle-font-size: 40px;
+    --theme-result-subtitle-font-weight: 400;
+    --theme-result-subtitle-color: rgba(164, 82, 18, 1);
+    --theme-result-title-font-size: 80px;
+    --theme-result-title-font-weight: 600;
+    --theme-result-title-shadow: none;
+    --theme-result-title-letter-spacing: normal;
+    --theme-result-title-color-blue: rgba(164, 82, 18, 1);
+    --theme-result-title-color-orange: rgba(164, 82, 18, 1);
+    --theme-result-title-color-draw: rgba(243, 131, 45, 1);
+    --theme-result-draw-font-size: 128px;
+    --theme-result-draw-shadow: none;
+    --theme-game-over-title-font-family: "Klee One", sans-serif;
+    --theme-game-over-title-font-size: 130px;
+    --theme-game-over-title-font-weight: 600;
+    --theme-game-over-title-letter-spacing: normal;
+    --theme-game-over-title-color: rgba(255, 255, 255, 1);
+    --theme-game-over-title-text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    --theme-game-over-subtitle-font-family: "Klee One", sans-serif;
+    --theme-game-over-subtitle-font-size: 42px;
+    --theme-game-over-subtitle-font-weight: 600;
+    --theme-game-over-subtitle-letter-spacing: normal;
+
     @media (max-width: $breakpoint-mobile) {
         --theme-button-frame: none;
         --theme-exit-button-border: rgba(243, 131, 45, 1);
     }
-
 }
