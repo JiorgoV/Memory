@@ -16,8 +16,10 @@
         font-weight: var(--theme-game-over-title-font-weight);
         line-height: 100%;
         letter-spacing: var(--theme-game-over-title-letter-spacing);
+        padding-left: var(--theme-game-over-title-letter-spacing);
         color: var(--theme-game-over-title-color);
         text-shadow: var(--theme-game-over-title-text-shadow);
+        text-align: center;
     }
 
     &__subtitle {
