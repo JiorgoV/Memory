@@ -110,6 +110,10 @@
         font-weight: var(--theme-exit-button-font-weight);
         transition: background-color 0.2s ease, box-shadow 0.2s ease;
 
+        @media (max-width: $breakpoint-tablet) {
+            align-self: flex-start;
+        }
+
         &:hover {
             background-color: var(--theme-exit-button-hover-background);
             background-image: none;
