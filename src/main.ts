@@ -1,26 +1,26 @@
 import "./styles/style.scss";
+import { createCards } from "./game";
 import { getHomeTemplate } from "./templates/home-template";
 import { getSettingsTemplate } from "./templates/settings-template";
 import { getCardTemplate, getGameTemplate } from "./templates/game-template";
 import { getGameOverTemplate } from "./templates/game-over-template";
-import { createCards } from "./game";
 import { getResultTemplate } from "./templates/result-template";
-
-import type { BoardSize, Card, GameSettings, PlayerColor, ThemeName, GameResult } from "./types";
+import type { BoardSize, Card, GameResult, GameSettings, PlayerColor, ThemeName } from "./types";
 
 const APP = document.getElementById("app") as HTMLElement;
 const SETTINGS: GameSettings = { theme: "code-vibes", player: null, size: null };
 const FLIP_BACK_DELAY = 1000;
 const POINTS_PER_MATCH = 1;
+const CARDS_PER_TURN = 2;
 const GAME_OVER_DELAY = 1000;
 const RESULT_DELAY = 3000;
 
 let cards: Card[] = [];
 let flippedCards: Card[] = [];
-let isLocked = false;
+let isLocked: boolean = false;
 let currentPlayer: PlayerColor = "blue";
 let scores: Record<PlayerColor, number> = { blue: 0, orange: 0 };
-let pendingTimeout = 0;
+let pendingTimeout: number = 0;
 
 /** Renders the home screen into the app container. */
 function renderHome(): void {
@@ -31,7 +31,7 @@ function renderHome(): void {
 
 /** Adds the click listener to the play button. */
 function addHomeListeners(): void {
-    const playButton = document.getElementById('home-button') as HTMLButtonElement;
+    const playButton = document.getElementById("home-button") as HTMLButtonElement;
     playButton.addEventListener("click", renderSettings);
 }
 
@@ -142,10 +142,10 @@ function handleCardClick(event: MouseEvent): void {
     const target = event.target as HTMLElement;
     const cardElement = target.closest(".game__card") as HTMLElement | null;
     if (cardElement === null || isLocked) return;
-    const card = cards.find((c) => c.id === Number(cardElement.dataset.id));
+    const card = cards.find((candidate) => candidate.id === Number(cardElement.dataset.id));
     if (card === undefined || card.state !== "hidden") return;
     flipCard(card);
-    if (flippedCards.length === 2) checkMatch();
+    if (flippedCards.length === CARDS_PER_TURN) checkMatch();
 }
 
 /** Turns a card face up and remembers it. */
