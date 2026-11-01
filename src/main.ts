@@ -247,10 +247,10 @@ function resetSettings(): void {
     SETTINGS.size = null;
 }
 
-/** Stops pending timers and returns to the home screen. */
+/** Stops pending timers and returns to the Settings screen. */
 function quitGame(): void {
     clearTimeout(pendingTimeout);
-    renderHome();
+    renderSettings();
 }
 
 renderHome();

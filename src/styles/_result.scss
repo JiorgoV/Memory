@@ -2,7 +2,6 @@
 
 .result {
     position: relative;
-    overflow: hidden;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -27,8 +26,17 @@
         position: absolute;
         top: 0;
         left: 50%;
+        display: block;
+        width: 100%;
         transform: translateX(-50%);
         animation: confetti-drop 0.8s ease-out;
+    }
+
+    &__confetti img {
+        display: block;
+        width: 100%;
+        height: clamp(120px, 15vw, 220px);
+        object-fit: cover;
     }
 
     &__subtitle {
