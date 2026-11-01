@@ -8,12 +8,13 @@ import { getResultTemplate } from "./templates/result-template";
 import type { BoardSize, Card, GameResult, GameSettings, PlayerColor, ThemeName } from "./types";
 
 const APP = document.getElementById("app") as HTMLElement;
-const SETTINGS: GameSettings = { theme: "code-vibes", player: null, size: null };
 const FLIP_BACK_DELAY = 1000;
 const POINTS_PER_MATCH = 1;
 const CARDS_PER_TURN = 2;
 const GAME_OVER_DELAY = 1000;
 const RESULT_DELAY = 3000;
+const DEFAULT_THEME: ThemeName = "code-vibes";
+const SETTINGS: GameSettings = { theme: null, player: null, size: null };
 
 let cards: Card[] = [];
 let flippedCards: Card[] = [];
@@ -21,6 +22,7 @@ let isLocked: boolean = false;
 let currentPlayer: PlayerColor = "blue";
 let scores: Record<PlayerColor, number> = { blue: 0, orange: 0 };
 let pendingTimeout: number = 0;
+let currentTheme: ThemeName = DEFAULT_THEME;
 
 /** Renders the home screen into the app container. */
 function renderHome(): void {
@@ -75,22 +77,24 @@ function updateSummary(input: HTMLInputElement): void {
 
 /** Shows the preview image of the selected theme. */
 function updatePreview(): void {
+    const theme = SETTINGS.theme ?? DEFAULT_THEME;
     const image = document.getElementById("theme-preview") as HTMLImageElement;
-    image.src = `img/preview-${SETTINGS.theme}.svg`;
-    image.alt = `Preview of the ${SETTINGS.theme} theme`;
+    image.src = `img/preview-${theme}.svg`;
+    image.alt = `Preview of the ${theme} theme`;
 }
 
-/** Enables the start button once player and size are selected. */
+/** Enables the start button once theme, player and size are selected. */
 function updateStartButton(): void {
     const startButton = document.getElementById("start-button") as HTMLButtonElement;
-    startButton.disabled = SETTINGS.player === null || SETTINGS.size === null;
+    startButton.disabled = SETTINGS.theme === null || SETTINGS.player === null || SETTINGS.size === null;
 }
 
 /** Renders the game screen into the app container. */
 function renderGame(): void {
-    if (SETTINGS.size === null || SETTINGS.player === null) return;
-    APP.dataset.theme = SETTINGS.theme;
-    APP.innerHTML = getGameTemplate(SETTINGS.theme);
+    if (SETTINGS.theme === null || SETTINGS.size === null || SETTINGS.player === null) return;
+    currentTheme = SETTINGS.theme;
+    APP.dataset.theme = currentTheme;
+    APP.innerHTML = getGameTemplate(currentTheme);
     resetGameState(SETTINGS.size, SETTINGS.player);
     renderBoard(SETTINGS.size);
     updateCurrentPlayer();
@@ -109,8 +113,8 @@ function resetGameState(size: BoardSize, player: PlayerColor): void {
 /** Renders all cards into the game board. */
 function renderBoard(size: BoardSize): void {
     const board = document.getElementById("game-board") as HTMLElement;
-    board.classList.add(`game__board--${size}`, `game__board--${SETTINGS.theme}`);
-    board.innerHTML = cards.map((card) => getCardTemplate(card, SETTINGS.theme)).join("");
+    board.classList.add(`game__board--${size}`, `game__board--${currentTheme}`);
+    board.innerHTML = cards.map((card) => getCardTemplate(card, currentTheme)).join("");
 }
 
 /** Adds the listeners for the game board and the exit dialog. */
@@ -211,7 +215,7 @@ function switchPlayer(): void {
 /** Shows the current player's icon in the header. */
 function updateCurrentPlayer(): void {
     const icon = document.getElementById("current-player") as HTMLImageElement;
-    icon.src = `img/${SETTINGS.theme}/current-${currentPlayer}.svg`;
+    icon.src = `img/${currentTheme}/current-${currentPlayer}.svg`;
     icon.alt = currentPlayer;
 }
 
@@ -222,7 +226,7 @@ function isGameOver(): boolean {
 
 /** Renders the game over screen and switches to the result after a delay. */
 function renderGameOver(): void {
-    APP.innerHTML = getGameOverTemplate(scores, SETTINGS.theme);
+    APP.innerHTML = getGameOverTemplate(scores, currentTheme);
     setTimeout(renderResult, RESULT_DELAY);
 }
 
@@ -235,14 +239,14 @@ function getResult(): GameResult {
 
 /** Renders the result screen into the app container. */
 function renderResult(): void {
-    APP.innerHTML = getResultTemplate(getResult(), SETTINGS.theme);
+    APP.innerHTML = getResultTemplate(getResult(), currentTheme);
     const backButton = document.getElementById("back-button") as HTMLButtonElement;
     backButton.addEventListener("click", renderHome);
 }
 
 /** Resets the settings to their default values. */
 function resetSettings(): void {
-    SETTINGS.theme = "code-vibes";
+    SETTINGS.theme = null;
     SETTINGS.player = null;
     SETTINGS.size = null;
 }

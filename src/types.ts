@@ -5,7 +5,7 @@ export type CardState = "hidden" | "flipped" | "matched";
 export type GameResult = PlayerColor | "draw";
 
 export interface GameSettings {
-    theme: ThemeName;
+    theme: ThemeName | null;
     player: PlayerColor | null;
     size: BoardSize | null;
 }

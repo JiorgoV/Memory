@@ -16,7 +16,6 @@ const SETTINGS_GROUPS: SettingsGroup[] = [
         name: "theme",
         title: "Game themes",
         icon: "palette.svg",
-        checkedValue: "code-vibes",
         options: [
             { value: "code-vibes", label: "Code vibes theme" },
             { value: "gaming", label: "Gaming theme" },
