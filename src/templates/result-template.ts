@@ -15,7 +15,12 @@ const BACK_BUTTON_TEXTS: Record<ThemeName, string> = {
     "foods": "Home"
 };
 
-/** Returns the HTML for the result screen. */
+/**
+ * Returns the HTML for the result screen.
+ * @param result - The winning player color, or "draw".
+ * @param theme - The selected theme for images and button text.
+ * @returns The complete result screen as an HTML string.
+ */
 export function getResultTemplate(result: GameResult, theme: ThemeName): string {
     const texts = RESULT_TEXTS[result];
     return `
@@ -29,11 +34,15 @@ export function getResultTemplate(result: GameResult, theme: ThemeName): string 
     `;
 }
 
-/** Returns the confetti image, with a longer version on wide screens. */
+/**
+ * Returns the confetti image, with a longer version on wide screens.
+ * @param theme - The selected theme whose confetti images are used.
+ * @returns The picture element with both confetti versions as an HTML string.
+ */
 function getConfettiTemplate(theme: ThemeName): string {
     return `
     <picture class="result__confetti">
-        <source media="${WIDESCREEN_MEDIA}" srcset="/img/${theme}/confetti-long.svg">
+        <source media="${WIDESCREEN_MEDIA}" srcset="img/${theme}/confetti-long.svg">
         <img src="img/${theme}/confetti.svg" alt="">
     </picture>
     `;

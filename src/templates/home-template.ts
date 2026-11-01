@@ -1,4 +1,7 @@
-/** Returns the HTML for the home screen. */
+/**
+ * Returns the HTML for the home screen.
+ * @returns The complete home screen with the play button as an HTML string.
+ */
 export function getHomeTemplate(): string {
     return `
     <section class="home">

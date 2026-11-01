@@ -44,7 +44,10 @@ const SETTINGS_GROUPS: SettingsGroup[] = [
     },
 ];
 
-/** Returns the HTML for the settings screen. */
+/**
+ * Returns the HTML for the settings screen.
+ * @returns The complete settings screen as an HTML string.
+ */
 export function getSettingsTemplate(): string {
     return `
     <section class="settings">
@@ -57,13 +60,20 @@ export function getSettingsTemplate(): string {
     `;
 }
 
-/** Returns the HTML for the settings form with all option groups. */
+/**
+ * Returns the HTML for the settings form with all option groups.
+ * @returns The settings form with all option groups as an HTML string.
+ */
 function getFormTemplate(): string {
     const groups = SETTINGS_GROUPS.map((group) => getGroupTemplate(group)).join("");
     return `<form class="settings__form">${groups}</form>`;
 }
 
-/** Returns the HTML for one group of radio options. */
+/**
+ * Returns the HTML for one group of radio options.
+ * @param group - The group data with name, title, icon and options.
+ * @returns The fieldset with all options of the group as an HTML string.
+ */
 function getGroupTemplate(group: SettingsGroup): string {
     const options = group.options.map((option) => getOptionTemplate(group, option)).join("");
     return `
@@ -76,7 +86,12 @@ function getGroupTemplate(group: SettingsGroup): string {
     `;
 }
 
-/** Returns the HTML for a single radio option. */
+/**
+ * Returns the HTML for a single radio option.
+ * @param group - The group the option belongs to; provides the input name and the preselected value.
+ * @param option - The option data with value and label.
+ * @returns The label with its radio input as an HTML string.
+ */
 function getOptionTemplate(group: SettingsGroup, option: SettingsOption): string {
     const checked = option.value === group.checkedValue ? "checked" : "";
     return `
@@ -87,7 +102,10 @@ function getOptionTemplate(group: SettingsGroup, option: SettingsOption): string
     `;
 }
 
-/** Returns the HTML for the theme preview and the summary bar. */
+/**
+ * Returns the HTML for the theme preview and the summary bar.
+ * @returns The preview area with the default theme image and the summary bar as an HTML string.
+ */
 function getPreviewTemplate(): string {
     return `
     <div class="settings__preview">
@@ -97,7 +115,10 @@ function getPreviewTemplate(): string {
     `;
 }
 
-/** Returns the HTML for the summary bar with the start button. */
+/**
+ * Returns the HTML for the summary bar with the start button.
+ * @returns The summary bar with placeholders for the selection and the disabled start button as an HTML string.
+ */
 function getSummaryTemplate(): string {
     return `
     <div class="settings__summary">
