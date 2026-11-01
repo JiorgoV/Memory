@@ -151,14 +151,19 @@ function addDialogListeners(): void {
     const backButton = document.getElementById("back-to-game") as HTMLButtonElement;
     const quitButton = document.getElementById("quit-game") as HTMLButtonElement;
     exitButton.addEventListener("click", () => dialog.showModal());
-    backButton.addEventListener("click", () => dialog.close());
+    backButton.addEventListener("click", () => closeDialog(dialog));
     quitButton.addEventListener("click", quitGame);
     dialog.addEventListener("click", (event) => closeOnBackdropClick(event, dialog));
+    dialog.addEventListener("cancel", (event) => closeOnEscape(event, dialog));
 }
 
-/** Closes the dialog when the click landed outside its content. */
+/**
+ * Closes the dialog when the click landed outside its content.
+ * @param event - The click event on the dialog.
+ * @param dialog - The dialog to close.
+ */
 function closeOnBackdropClick(event: MouseEvent, dialog: HTMLDialogElement): void {
-    if (event.target === dialog) dialog.close();
+    if (event.target === dialog) closeDialog(dialog);
 }
 
 /** Handles a click on the game board. */
@@ -275,6 +280,28 @@ function resetSettings(): void {
 function quitGame(): void {
     clearTimeout(pendingTimeout);
     renderSettings();
+}
+
+/**
+ * Plays the closing animation and closes the dialog afterwards.
+ * @param dialog - The dialog to close.
+ */
+function closeDialog(dialog: HTMLDialogElement): void {
+    dialog.classList.add("game__dialog--closing");
+    dialog.addEventListener("animationend", () => {
+        dialog.classList.remove("game__dialog--closing");
+        dialog.close();
+    }, { once: true });
+}
+
+/**
+ * Replaces the instant close on Escape with the animated close.
+ * @param event - The cancel event fired by the Escape key.
+ * @param dialog - The dialog to close.
+ */
+function closeOnEscape(event: Event, dialog: HTMLDialogElement): void {
+    event.preventDefault();
+    closeDialog(dialog);
 }
 
 renderHome();
