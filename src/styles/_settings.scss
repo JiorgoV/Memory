@@ -175,6 +175,18 @@
         }
     }
 
+    &__form-group:has(input[name="theme"]):not(:has(input:checked)):not(:has(.settings__option:hover)) .settings__option:first-of-type {
+        font-weight: 700;
+
+        &::after {
+            width: 36px;
+        }
+
+        &::before {
+            transform: rotate(45deg) scale(1);
+        }
+    }
+
     &__preview {
         display: flex;
         flex-direction: column;
