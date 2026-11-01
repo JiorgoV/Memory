@@ -372,7 +372,7 @@ function getResult(): GameResult {
 function renderResult(): void {
     APP.innerHTML = getResultTemplate(getResult(), currentTheme);
     const backButton = document.getElementById("back-button") as HTMLButtonElement;
-    backButton.addEventListener("click", renderHome);
+    backButton.addEventListener("click", renderSettings);
 }
 
 renderHome();
