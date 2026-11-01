@@ -49,6 +49,8 @@ function addSettingsListeners(): void {
     const form = document.querySelector(".settings__form") as HTMLFormElement;
     const startButton = document.getElementById("start-button") as HTMLButtonElement;
     form.addEventListener("change", handleSettingsChange);
+    form.addEventListener("mouseover", handlePreviewHover);
+    form.addEventListener("mouseleave", updatePreview);
     startButton.addEventListener("click", renderGame);
 }
 
@@ -75,12 +77,30 @@ function updateSummary(input: HTMLInputElement): void {
     summaryItem.innerText = label.innerText.trim();
 }
 
-/** Shows the preview image of the selected theme. */
-function updatePreview(): void {
-    const theme = SETTINGS.theme ?? DEFAULT_THEME;
+/**
+ * Shows the preview image of the given theme.
+ * @param theme - The theme whose preview image is shown.
+ */
+function showPreview(theme: ThemeName): void {
     const image = document.getElementById("theme-preview") as HTMLImageElement;
     image.src = `img/preview-${theme}.svg`;
     image.alt = `Preview of the ${theme} theme`;
+}
+
+/** Shows the preview image of the selected theme, or the default theme if none is selected. */
+function updatePreview(): void {
+    showPreview(SETTINGS.theme ?? DEFAULT_THEME);
+}
+
+/**
+ * Shows the preview of the hovered theme option, or the selected theme otherwise.
+ * @param event - The mouseover event from the settings form.
+ */
+function handlePreviewHover(event: MouseEvent): void {
+    const option = (event.target as HTMLElement).closest(".settings__option");
+    const input = option?.querySelector("input");
+    if (input?.name === "theme") showPreview(input.value as ThemeName);
+    else updatePreview();
 }
 
 /** Enables the start button once theme, player and size are selected. */
